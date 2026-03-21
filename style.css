@@ -105,6 +105,7 @@ body{
   font-weight:700;
   cursor:pointer;
   transition:.2s;
+  text-decoration:none;
 }
 
 .primary:hover,
@@ -608,6 +609,15 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
   }
 }
 
+.theme-toggle-wrap{
+  position: absolute !important;
+  top: 20px;
+  right: 20px;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 1000 !important;
+}
+
 /* TABLET / IPAD */
 @media (max-width: 1024px){
   .profile-header,
@@ -717,17 +727,19 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
   }
 
   .theme-toggle-wrap{
+    position: absolute !important;
     top: 16px;
     right: 16px;
-    left: auto;
-    z-index: 100000;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 1000 !important;
   }
 }
 
 /* MOBILE / ANDROID / IPHONE */
 @media (max-width: 768px){
   body{
-    padding: 80px 16px 90px;
+    padding: 95px 16px 90px;
   }
 
   .profile-header,
@@ -790,6 +802,7 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
 
   .about-id-section{
     left: 0;
+    display: flex;
     flex-direction: column;
     gap: 16px;
     align-items: stretch;
@@ -797,18 +810,11 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
 
   .left-column,
   .right-column{
-    width: 100%;
-    max-width: 100%;
-    gap: 16px;
+    display: contents;
   }
 
-  .right-column{
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  .about-container,
-  .tech-stack-container{
+  .about-container{
+    order: 1;
     width: 100%;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -816,11 +822,28 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
     box-sizing: border-box;
   }
 
+  .id-wrapper{
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .experience-container{
+    order: 3;
     width: 100%;
     margin-left: 0 !important;
     margin-right: 0 !important;
     margin-top: 0;
+    padding: 18px 16px;
+    box-sizing: border-box;
+  }
+
+  .tech-stack-container{
+    order: 4;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     padding: 18px 16px;
     box-sizing: border-box;
   }
@@ -849,12 +872,6 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
   .tech-tags span{
     font-size: 12.5px;
     padding: 5px 9px;
-  }
-
-  .id-wrapper{
-    width: 100%;
-    display: flex;
-    justify-content: center;
   }
 
   .student-id{
@@ -920,11 +937,12 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
   }
 
   .theme-toggle-wrap{
-    position: fixed;
+    position: absolute !important;
     top: 12px;
     right: 12px;
-    left: auto;
-    z-index: 100000;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 1000 !important;
   }
 
   .theme-toggle{
@@ -936,7 +954,7 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
 /* EXTRA SMALL PHONES */
 @media (max-width: 480px){
   body{
-    padding: 74px 12px 88px;
+    padding: 86px 12px 88px;
   }
 
   .avatar-stack,
@@ -1024,9 +1042,12 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
   }
 
   .theme-toggle-wrap{
+    position: absolute !important;
     top: 8px;
     right: 8px;
-    left: auto;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 1000 !important;
   }
 
   .theme-toggle{
