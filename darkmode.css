@@ -495,7 +495,7 @@ body.dark-mode .project-domain{
   color: var(--text);
 }
 
-.gallery-nav:hover{
+body.dark-mode .gallery-nav:hover{
   background: #1d222c;
   color: var(--text);
 }
