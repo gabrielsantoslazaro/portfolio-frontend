@@ -403,3 +403,135 @@ body.dark-mode .site-footer{
 body.dark-mode .site-footer p{
   border-top: 1px solid #2a2a2a;
 }
+
+/* RECENT PROJECTS */
+.recent-projects-container{
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.recent-projects-container h2,
+.small-project-card h3{
+  color: var(--text);
+}
+
+.small-project-card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.small-project-card p{
+  color: var(--chat-muted);
+}
+
+.project-domain{
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--chat-muted);
+}
+
+body.dark-mode .small-project-card{
+  background: #171a21;
+  border: 1px solid #39414f;
+}
+
+body.dark-mode .small-project-card:hover{
+  box-shadow: 0 8px 18px rgba(0,0,0,0.28);
+}
+
+body.dark-mode .project-domain{
+  background: #1d222c;
+  border: 1px solid #39414f;
+  color: var(--text);
+}
+
+/* SOCIAL LINKS */
+.social-links-container{
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.social-links-container h2{
+  color: var(--text);
+}
+
+.social-link-item{
+  color: var(--text);
+  border-top: 1px solid var(--border);
+}
+
+.social-link-item span{
+  color: var(--text);
+}
+
+.social-link-item,
+.social-link-item:visited,
+.social-link-item:hover,
+.social-link-item:focus,
+.social-link-item:active{
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* GALLERY */
+.gallery-container{
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.gallery-container h2{
+  color: var(--text);
+}
+
+.gallery-img{
+  border: 1px solid var(--border);
+  background: #1d222c;
+}
+
+.gallery-nav{
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.gallery-nav:hover{
+  background: #1d222c;
+  color: var(--text);
+}
+
+body.dark-mode .social-links-container,
+body.dark-mode .gallery-container{
+  background: #171a21;
+  border: 1px solid #39414f;
+}
+
+body.dark-mode .social-links-container h2,
+body.dark-mode .gallery-container h2,
+body.dark-mode .social-link-item,
+body.dark-mode .social-link-item span{
+  color: #f5f7fa;
+}
+
+body.dark-mode .social-link-item{
+  border-top: 1px solid #39414f;
+}
+
+body.dark-mode .gallery-img{
+  border: 1px solid #39414f;
+  background: #1d222c;
+}
+
+body.dark-mode .gallery-nav{
+  background: #171a21;
+  border: 1px solid #39414f;
+  color: #f5f7fa;
+}
+
+body.dark-mode .gallery-nav:hover{
+  background: #1d222c;
+}
+
+body.dark-mode .social-link-item img{
+  filter: brightness(0) invert(1);
+}
