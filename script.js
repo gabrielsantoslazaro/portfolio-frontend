@@ -317,6 +317,8 @@ function initGalleryLightbox() {
 document.addEventListener("DOMContentLoaded", function () {
   const input = document.getElementById("chatInput");
   const slider = document.getElementById("gallerySlider");
+  const emailForm = document.getElementById("emailForm");
+  const emailModal = document.getElementById("emailModal");
 
   const savedTheme = localStorage.getItem("theme") || "light";
   applyTheme(savedTheme);
@@ -339,5 +341,90 @@ document.addEventListener("DOMContentLoaded", function () {
     updateGalleryNav();
   }
 
+  if (emailForm) {
+    emailForm.addEventListener("submit", submitEmailForm);
+  }
+
+  if (emailModal) {
+    emailModal.addEventListener("click", function (e) {
+      if (e.target === emailModal) {
+        closeEmailModal();
+      }
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeEmailModal();
+    }
+  });
+
   initGalleryLightbox();
 });
+
+function openEmailModal() {
+  const modal = document.getElementById("emailModal");
+  if (!modal) return;
+
+  modal.classList.add("show");
+  document.body.classList.add("email-modal-open");
+
+  const firstInput = document.getElementById("emailName");
+  if (firstInput) {
+    setTimeout(() => firstInput.focus(), 180);
+  }
+}
+
+function closeEmailModal() {
+  const modal = document.getElementById("emailModal");
+  if (!modal) return;
+
+  modal.classList.remove("show");
+  document.body.classList.remove("email-modal-open");
+}
+
+async function submitEmailForm(event) {
+  event.preventDefault();
+
+  const form = document.getElementById("emailForm");
+  const status = document.getElementById("emailFormStatus");
+  const submitBtn = form ? form.querySelector(".email-submit-btn") : null;
+
+  if (!form || !status || !submitBtn) return;
+
+  const formData = new FormData(form);
+
+  status.textContent = "Sending...";
+  status.classList.remove("success", "error");
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch("https://formspree.io/f/mvgrnjpd", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (response.ok) {
+      form.reset();
+      status.textContent = "Message sent successfully.";
+      status.classList.add("success");
+
+      setTimeout(() => {
+        closeEmailModal();
+        status.textContent = "";
+        status.classList.remove("success");
+      }, 1400);
+    } else {
+      status.textContent = "Failed to send message. Please try again.";
+      status.classList.add("error");
+    }
+  } catch (error) {
+    status.textContent = "Network error. Please try again.";
+    status.classList.add("error");
+  } finally {
+    submitBtn.disabled = false;
+  }
+}
