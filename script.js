@@ -7,15 +7,6 @@ function downloadCV() {
   document.body.removeChild(link);
 }
 
-function updateThemeAvatars(theme) {
-  const themeAvatars = document.querySelectorAll(".theme-avatar");
-  const chatAvatarSrc = theme === "dark" ? "dark.png" : "light.png";
-
-  themeAvatars.forEach(img => {
-    img.src = chatAvatarSrc;
-  });
-}
-
 function toggleChat() {
   const chatBox = document.getElementById("chatBox");
   const input = document.getElementById("chatInput");
@@ -28,10 +19,6 @@ function toggleChat() {
     chatBox.classList.remove("show");
   } else {
     chatBox.classList.add("show");
-
-    const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-    updateThemeAvatars(currentTheme);
-
     setTimeout(() => {
       if (input) input.focus();
     }, 220);
@@ -40,9 +27,8 @@ function toggleChat() {
 
 function scrollChatToBottom() {
   const chatBody = document.getElementById("chatBody");
-  if (chatBody) {
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
+  if (!chatBody) return;
+  chatBody.scrollTop = chatBody.scrollHeight;
 }
 
 function addUserMessage(message) {
@@ -67,7 +53,7 @@ function addBotMessage(message) {
   if (!chatBody) return;
 
   const isDark = document.body.classList.contains("dark-mode");
-  const avatarSrc = isDark ? "dark.png" : "light.png";
+  const avatarSrc = isDark ? "dark.png" : "Images/light.png";
 
   const botRow = document.createElement("div");
   botRow.className = "bot-row";
@@ -89,7 +75,7 @@ function addTypingMessage() {
   if (!chatBody) return;
 
   const isDark = document.body.classList.contains("dark-mode");
-  const avatarSrc = isDark ? "dark.png" : "light.png";
+  const avatarSrc = isDark ? "dark.png" : "Images/light.png";
 
   const typingRow = document.createElement("div");
   typingRow.className = "bot-row";
@@ -123,10 +109,10 @@ async function sendMessage() {
   input.value = "";
   updateCharCount();
 
-  addTypingMessage(); 
+  addTypingMessage();
 
   try {
-    const response = await fetch("https://portfolio-backend-1-aupt.onrender.com/chat", {
+    const response = await fetch("/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -170,63 +156,8 @@ function applyTheme(theme) {
   const lightAvatar = document.querySelector(".light-avatar");
   const darkAvatar = document.querySelector(".dark-avatar");
 
-  if (theme === "dark") {
-    body.classList.add("dark-mode");
-    if (themeText) themeText.textContent = "Light";
-    if (themeIcon) themeIcon.textContent = "☀️";
-
-    if (lightAvatar) lightAvatar.classList.remove("active");
-    if (darkAvatar) darkAvatar.classList.add("active");
-  } else {
-    body.classList.remove("dark-mode");
-    if (themeText) themeText.textContent = "Dark";
-    if (themeIcon) themeIcon.textContent = "🌙";
-
-    if (darkAvatar) darkAvatar.classList.remove("active");
-    if (lightAvatar) lightAvatar.classList.add("active");
-  }
-
-  updateThemeAvatars(theme);
-}
-
-function toggleTheme() {
-  const isDark = document.body.classList.contains("dark-mode");
-  const nextTheme = isDark ? "light" : "dark";
-
-  localStorage.setItem("theme", nextTheme);
-  applyTheme(nextTheme);
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const input = document.getElementById("chatInput");
-  const savedTheme = localStorage.getItem("theme") || "light";
-
-  applyTheme(savedTheme);
-  updateThemeAvatars(savedTheme);
-
-  if (input) {
-    input.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        sendMessage();
-      }
-    });
-
-    input.addEventListener("input", updateCharCount);
-    updateCharCount();
-  }
-});
-
-function applyTheme(theme) {
-  const body = document.body;
-  const themeText = document.querySelector(".theme-text");
-  const themeIcon = document.querySelector(".theme-icon");
-
-  const lightAvatar = document.querySelector(".light-avatar");
-  const darkAvatar = document.querySelector(".dark-avatar");
-
   const themeAvatars = document.querySelectorAll(".theme-avatar");
-  const chatAvatarSrc = theme === "dark" ? "dark.png" : "light.png";
+  const chatAvatarSrc = theme === "dark" ? "dark.png" : "Images/light.png";
 
   if (theme === "dark") {
     body.classList.add("dark-mode");
@@ -244,7 +175,7 @@ function applyTheme(theme) {
     if (lightAvatar) lightAvatar.classList.add("active");
   }
 
-  themeAvatars.forEach(img => {
+  themeAvatars.forEach((img) => {
     img.src = chatAvatarSrc;
   });
 }
@@ -257,12 +188,156 @@ function toggleTheme() {
   applyTheme(nextTheme);
 }
 
+function getGalleryStep() {
+  const slider = document.getElementById("gallerySlider");
+  if (!slider) return 0;
+
+  const firstImage = slider.querySelector(".gallery-img");
+  if (!firstImage) return 0;
+
+  const imageWidth = firstImage.offsetWidth;
+  const gap = parseInt(window.getComputedStyle(slider).gap) || 0;
+
+  return imageWidth + gap;
+}
+
+function updateGalleryNav() {
+  const slider = document.getElementById("gallerySlider");
+  const prevBtn = document.querySelector(".gallery-prev");
+  const nextBtn = document.querySelector(".gallery-next");
+
+  if (!slider || !prevBtn || !nextBtn) return;
+
+  const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+  const currentScroll = slider.scrollLeft;
+  const allowance = 4;
+
+  const isAtStart = currentScroll <= allowance;
+  const isAtEnd = currentScroll >= maxScrollLeft - allowance || maxScrollLeft <= 0;
+
+  prevBtn.disabled = isAtStart;
+  nextBtn.disabled = isAtEnd;
+
+  prevBtn.classList.toggle("is-disabled", isAtStart);
+  nextBtn.classList.toggle("is-disabled", isAtEnd);
+}
+
 function scrollGallery(direction) {
   const slider = document.getElementById("gallerySlider");
   if (!slider) return;
 
-  slider.scrollBy({
-    left: direction * 336,
+  const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+  const currentScroll = slider.scrollLeft;
+  const step = getGalleryStep() || 336;
+  const allowance = 4;
+
+  let targetScroll = currentScroll + (direction * step);
+
+  if (targetScroll < 0) targetScroll = 0;
+  if (targetScroll > maxScrollLeft) targetScroll = maxScrollLeft;
+
+  if (
+    (direction > 0 && currentScroll >= maxScrollLeft - allowance) ||
+    (direction < 0 && currentScroll <= allowance)
+  ) {
+    updateGalleryNav();
+    return;
+  }
+
+  slider.scrollTo({
+    left: targetScroll,
     behavior: "smooth"
   });
+
+  setTimeout(updateGalleryNav, 250);
 }
+
+function createGalleryLightbox() {
+  if (document.getElementById("galleryLightbox")) return;
+
+  const lightbox = document.createElement("div");
+  lightbox.id = "galleryLightbox";
+  lightbox.className = "gallery-lightbox";
+  lightbox.innerHTML = `
+    <button class="lightbox-close" aria-label="Close preview">&times;</button>
+    <img class="lightbox-image" src="" alt="Gallery preview">
+  `;
+
+  document.body.appendChild(lightbox);
+
+  const closeBtn = lightbox.querySelector(".lightbox-close");
+
+  function closeLightbox() {
+    lightbox.classList.remove("show");
+    document.body.classList.remove("lightbox-open");
+  }
+
+  closeBtn.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && lightbox.classList.contains("show")) {
+      closeLightbox();
+    }
+  });
+}
+
+function openGalleryLightbox(imageSrc, imageAlt = "Gallery preview") {
+  const lightbox = document.getElementById("galleryLightbox");
+  if (!lightbox) return;
+
+  const lightboxImage = lightbox.querySelector(".lightbox-image");
+  lightboxImage.src = imageSrc;
+  lightboxImage.alt = imageAlt;
+
+  lightbox.classList.add("show");
+  document.body.classList.add("lightbox-open");
+}
+
+function initGalleryLightbox() {
+  createGalleryLightbox();
+
+  const galleryImages = document.querySelectorAll(".gallery-img");
+  if (!galleryImages.length) return;
+
+  galleryImages.forEach((img) => {
+    img.style.cursor = "zoom-in";
+
+    img.addEventListener("click", function () {
+      openGalleryLightbox(this.src, this.alt || "Gallery preview");
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const input = document.getElementById("chatInput");
+  const slider = document.getElementById("gallerySlider");
+
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+
+  if (input) {
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+
+    input.addEventListener("input", updateCharCount);
+    updateCharCount();
+  }
+
+  if (slider) {
+    slider.addEventListener("scroll", updateGalleryNav, { passive: true });
+    window.addEventListener("resize", updateGalleryNav);
+    updateGalleryNav();
+  }
+
+  initGalleryLightbox();
+});
