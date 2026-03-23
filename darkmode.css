@@ -535,3 +535,70 @@ body.dark-mode .gallery-nav:hover{
 body.dark-mode .social-link-item img{
   filter: brightness(0) invert(1);
 }
+
+.email-modal-card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.email-modal-card h2{
+  color: var(--text);
+}
+
+.email-modal-subtext{
+  color: var(--muted);
+}
+
+.email-modal-close{
+  color: var(--text);
+}
+
+.email-form input,
+.email-form textarea{
+  background: var(--input-bg);
+  color: var(--input-text);
+  border: 1px solid var(--input-border);
+}
+
+.email-form input::placeholder,
+.email-form textarea::placeholder{
+  color: var(--muted);
+}
+
+.email-submit-btn{
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+}
+
+.email-submit-btn:hover{
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+}
+
+.form-field label{
+  color: var(--text);
+}
+
+.form-field input,
+.form-field textarea{
+  background: var(--input-bg);
+  color: var(--input-text);
+  border: 1px solid var(--input-border);
+}
+
+.form-field input:focus,
+.form-field textarea:focus{
+  border-color: var(--text);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill{
+  -webkit-text-fill-color: var(--input-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset;
+  box-shadow: 0 0 0 1000px var(--input-bg) inset;
+  border: 1px solid var(--input-border);
+}
