@@ -157,7 +157,7 @@ function applyTheme(theme) {
   const darkAvatar = document.querySelector(".dark-avatar");
 
   const themeAvatars = document.querySelectorAll(".theme-avatar");
-  const chatAvatarSrc = theme === "dark" ? "dark.png" : "Images/light.png";
+  const chatAvatarSrc = theme === "dark" ? "dark.png" : "light.png";
 
   if (theme === "dark") {
     body.classList.add("dark-mode");
