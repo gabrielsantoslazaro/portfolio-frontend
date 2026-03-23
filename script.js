@@ -1,5 +1,3 @@
-const BACKEND_URL = "https://portfolio-backend-1-aupt.onrender.com";
-
 function downloadCV() {
   const link = document.createElement("a");
   link.href = "Gabriel-Lazaro-CV.pdf";
