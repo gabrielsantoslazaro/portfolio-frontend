@@ -831,6 +831,72 @@ body:not(.dark-mode) .send-btn.active:hover{
   color: #111;
 }
 
+.gallery-nav:disabled,
+.gallery-nav.is-disabled{
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.gallery-slider{
+  overscroll-behavior-x: contain;
+}
+
+.gallery-lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 99999;
+}
+
+.gallery-lightbox.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-image{
+  max-width: 95vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+.lightbox-close{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close:hover{
+  background: rgba(255,255,255,0.24);
+}
+
+body.lightbox-open{
+  overflow: hidden;
+}
+
 /* KEYFRAMES */
 @keyframes pageFade{
   from{ opacity: 0; }
