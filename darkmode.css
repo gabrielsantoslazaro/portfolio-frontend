@@ -604,11 +604,12 @@ textarea:-webkit-autofill{
 }
 
 .typing-bubble {
-  display: flex;
+  display: inline-flex !important;
   align-items: center;
   gap: 5px;
-  padding: 14px 18px;
-  min-width: 52px;
+  padding: 10px 12px !important;
+  width: fit-content !important;
+  min-width: unset !important;
 }
 
 .typing-dot {
