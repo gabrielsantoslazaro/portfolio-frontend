@@ -1196,111 +1196,148 @@ textarea:-webkit-autofill{
 }
 
 /* TABLET / IPAD */
-@media (max-width: 1024px){
+@media (max-width: 1024px) and (min-width: 769px){
+  body{
+    padding: 100px 24px 90px;
+  }
+
   .profile-header,
-  .about-id-section{
+  .about-id-section,
+  .recent-projects-container,
+  .gallery-container,
+  .site-footer{
     width: 100%;
-    max-width: 920px;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .profile-header{
     transform: none;
     left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
   }
 
-  .about-id-section{
-    left: 0;
-    gap: 16px;
-    align-items: stretch;
-  }
-
-  .left-column{
+  .info{
     flex: 1;
     min-width: 0;
-    gap: 16px;
-  }
-
-  .right-column{
-    width: 190px;
-    flex-shrink: 0;
-    gap: 16px;
-  }
-
-  .about-container,
-  .tech-stack-container{
-    width: 100%;
-    margin-left: 0;
-    padding: 22px 22px;
-  }
-
-  .experience-container{
-    width: 100%;
-    margin-left: 0;
-    padding: 20px 18px;
-  }
-
-  .student-id{
-    width: 190px;
-    margin-left: 0;
   }
 
   .actions{
-    gap: 8px;
-    flex-wrap: nowrap;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   .primary,
   .ghost{
-    padding: 5px 12px;
+    padding: 8px 14px;
     font-size: 13px;
   }
 
   .download-btn{
-    min-width: 0;
-    width: 135px;
+    width: auto;
+    min-width: 160px;
     white-space: nowrap;
-    justify-content: center;
-    flex-shrink: 0;
   }
 
   .download-btn .arrow{
     display: none;
   }
 
-  .timeline-item{
-    padding-left: 20px;
-    margin-bottom: 18px;
-  }
-
-  .timeline-top{
+  .about-id-section{
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
+    gap: 18px;
+    left: 0;
+    align-items: stretch;
   }
 
-  .timeline-top h4{
-    font-size: 15px;
-    line-height: 1.3;
+  .left-column,
+  .right-column{
+    width: 100%;
+    display: contents;
   }
 
-  .timeline-top span{
-    font-size: 12px;
+  .about-container{
+    order: 1;
+    width: 100%;
+    margin-left: 0;
+    padding: 22px;
+    box-sizing: border-box;
   }
 
-  .timeline-content p{
-    font-size: 13px;
-    line-height: 1.5;
+  .id-wrapper{
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .student-id{
+    width: 220px;
+    margin-left: 0;
+  }
+
+  .experience-container{
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    padding: 22px;
+    box-sizing: border-box;
+  }
+
+  .tech-stack-container{
+    order: 4;
+    width: 100%;
+    margin-left: 0;
+    padding: 22px;
+    box-sizing: border-box;
+  }
+
+  .recent-projects-container{
+    order: 5;
+    width: 100%;
+    margin-left: 0;
+    padding: 22px;
+    box-sizing: border-box;
+  }
+
+  .social-links-container{
+    order: 6;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 18px 20px;
+    box-sizing: border-box;
+    min-height: auto;
+  }
+
+  .gallery-container{
+    width: 100%;
+    max-width: 860px;
+    left: 0;
+    margin: 20px auto 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .gallery-img{
+    width: 180px;
+    height: 140px;
   }
 
   .chat-float{
-    right: 16px;
-    bottom: 16px;
+    right: 18px;
+    bottom: 18px;
     left: auto;
   }
 
   .chat-box{
-    right: 16px;
-    bottom: 78px;
+    right: 18px;
+    bottom: 82px;
   }
 
   .theme-toggle-wrap{
@@ -1311,34 +1348,6 @@ textarea:-webkit-autofill{
     bottom: auto !important;
     z-index: 1000 !important;
   }
-
-  .recent-projects-container{
-  width: 100%;
-  margin-left: 0;
-  padding: 22px 22px;
-}
-
-.gallery-container{
-  width: 100%;
-  max-width: 100%;
-  left: 0;
-  margin: 20px auto 0;
-  padding: 20px 18px 16px;
-}
-
-.gallery-img{
-  width: 170px;
-  height: 135px;
-}
-
-.gallery-prev{
-  left: -10px;
-}
-
-.gallery-next{
-  right: -10px;
-}
-
 }
 
 /* MOBILE / ANDROID / IPHONE */
