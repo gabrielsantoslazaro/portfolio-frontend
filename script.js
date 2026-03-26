@@ -437,16 +437,6 @@ if (
     }
   });
 }
-
-    certificateModalClose.addEventListener("click", closeCertificateModal);
-    certificateModalOverlay.addEventListener("click", closeCertificateModal);
-
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && certificateModal.classList.contains("show")) {
-        closeCertificateModal();
-      }
-    });
-  }
 });
 
 function openEmailModal() {
