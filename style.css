@@ -1170,6 +1170,10 @@ textarea:-webkit-autofill{
   flex-direction: column;
 }
 
+.certificate-item:hover .certificate-info h4 {
+  text-decoration: underline;
+}
+
 .certificate-item {
   display: block;
   text-decoration: none;
