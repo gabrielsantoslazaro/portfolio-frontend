@@ -812,6 +812,7 @@ body:not(.dark-mode) .send-btn.active:hover{
   box-sizing: border-box;
   padding: 22px 22px 18px;
   position: relative;
+  left: -10;
 }
 
 .gallery-container h2{
