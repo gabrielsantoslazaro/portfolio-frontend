@@ -1268,9 +1268,9 @@ textarea:-webkit-autofill{
 }
 
 .certificate-modal-close{
-  position: absolute;
-  top: 18px;
-  right: 18px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
   width: 44px;
   height: 44px;
   border: none;
@@ -1283,7 +1283,7 @@ textarea:-webkit-autofill{
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 3;
+  z-index: 100001;
 }
 
 .certificate-modal-close:hover{
