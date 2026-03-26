@@ -1267,7 +1267,7 @@ textarea:-webkit-autofill{
   box-shadow: none;
 }
 
-.modal-close-btn{
+.certificate-modal-close{
   position: absolute;
   top: 18px;
   right: 18px;
@@ -1283,9 +1283,10 @@ textarea:-webkit-autofill{
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 }
 
-.modal-close-btn:hover{
+.certificate-modal-close:hover{
   background: rgba(255,255,255,0.24);
 }
 
