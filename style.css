@@ -1170,18 +1170,12 @@ textarea:-webkit-autofill{
   flex-direction: column;
 }
 
-.certificate-item:hover .certificate-info h4 {
-  text-decoration: underline;
-}
-
 .certificate-item {
   display: block;
-  text-decoration: none;
-  color: inherit;
   padding: 12px 0;
   border-top: 1px solid #f0f0f0;
-  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
   cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .certificates-list .certificate-item:first-child {
@@ -1193,13 +1187,8 @@ textarea:-webkit-autofill{
   opacity: 0.85;
 }
 
-.certificate-item,
-.certificate-item:visited,
-.certificate-item:hover,
-.certificate-item:focus,
-.certificate-item:active {
-  text-decoration: none;
-  color: #111;
+.certificate-item:hover .certificate-info h4 {
+  text-decoration: underline;
 }
 
 .certificate-info h4 {
@@ -1213,6 +1202,81 @@ textarea:-webkit-autofill{
   margin: 0;
   font-size: 13px;
   color: #666;
+}
+
+/* MODAL */
+.certificate-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.certificate-modal.show {
+  display: flex;
+}
+
+.certificate-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.certificate-modal-content {
+  position: relative;
+  z-index: 2;
+  width: min(1100px, 95vw);
+  max-height: 92vh;
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  overflow: auto;
+}
+
+.certificate-modal-content h3 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+}
+
+.certificate-modal-image-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.certificate-modal-image-wrap img {
+  max-width: 100%;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.certificate-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  color: #111;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 @media (max-width: 768px){
