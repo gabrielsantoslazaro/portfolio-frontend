@@ -1267,7 +1267,7 @@ textarea:-webkit-autofill{
   box-shadow: none;
 }
 
-.lightbox-close{
+.modal-close-btn{
   position: absolute;
   top: 18px;
   right: 18px;
@@ -1285,7 +1285,7 @@ textarea:-webkit-autofill{
   justify-content: center;
 }
 
-.lightbox-close:hover{
+.modal-close-btn:hover{
   background: rgba(255,255,255,0.24);
 }
 
