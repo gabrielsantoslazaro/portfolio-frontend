@@ -391,6 +391,91 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   initGalleryLightbox();
+
+  /* CERTIFICATE MODAL */
+  const certificateItems = document.querySelectorAll(".certificate-item");
+  const certificateModal = document.getElementById("certificateModal");
+  const certificateModalOverlay = document.getElementById("certificateModalOverlay");
+  const certificateModalClose = document.getElementById("certificateModalClose");
+  const certificateModalImage = document.getElementById("certificateModalImage");
+  const certificateModalTitle = document.getElementById("certificateModalTitle");
+
+  function openCertificateModal(imageSrc, title) {
+    if (!certificateModal || !certificateModalImage || !certificateModalTitle) return;
+
+    certificateModalImage.src = imageSrc;
+    certificateModalImage.alt = title;
+    certificateModalTitle.textContent = title;
+    certificateModal.classList.add("show");
+    document.body.classList.add("modal-open");
+  }
+
+  function closeCertificateModal() {
+    if (!certificateModal || !certificateModalImage) return;
+
+    certificateModal.classList.remove("show");
+    document.body.classList.remove("modal-open");
+    certificateModalImage.src = "";
+  }
+
+  if (certificateItems.length && certificateModal && certificateModalOverlay && certificateModalClose && certificateModalImage && certificateModalTitle) {
+    certificateItems.forEach((item) => {
+      item.addEventListener("click", function () {
+        const imageSrc = this.getAttribute("data-cert");
+        const title = this.getAttribute("data-title") || "Certificate Preview";
+
+        if (!imageSrc) return;
+        openCertificateModal(imageSrc, title);
+      });
+    });
+
+    certificateModalClose.addEventListener("click", closeCertificateModal);
+    certificateModalOverlay.addEventListener("click", closeCertificateModal);
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && certificateModal.classList.contains("show")) {
+        closeCertificateModal();
+      }
+    });
+  }
+});
+
+    input.addEventListener("input", updateCharCount);
+    updateCharCount();
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener("click", function () {
+      if (isBotReplying) return;
+      sendMessage();
+    });
+  }
+
+  if (slider) {
+    slider.addEventListener("scroll", updateGalleryNav, { passive: true });
+    window.addEventListener("resize", updateGalleryNav);
+    updateGalleryNav();
+  }
+
+  if (emailForm) {
+    emailForm.addEventListener("submit", submitEmailForm);
+  }
+
+  if (emailModal) {
+    emailModal.addEventListener("click", function (e) {
+      if (e.target === emailModal) {
+        closeEmailModal();
+      }
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeEmailModal();
+    }
+  });
+
+  initGalleryLightbox();
 });
 
 function openEmailModal() {
@@ -459,41 +544,3 @@ async function submitEmailForm(event) {
     submitBtn.disabled = false;
   }
 }
-
-const certificateItems = document.querySelectorAll(".certificate-item");
-const certificateModal = document.getElementById("certificateModal");
-const certificateModalOverlay = document.getElementById("certificateModalOverlay");
-const certificateModalClose = document.getElementById("certificateModalClose");
-const certificateModalImage = document.getElementById("certificateModalImage");
-const certificateModalTitle = document.getElementById("certificateModalTitle");
-
-function openCertificateModal(imageSrc, title) {
-  certificateModalImage.src = imageSrc;
-  certificateModalImage.alt = title;
-  certificateModalTitle.textContent = title;
-  certificateModal.classList.add("show");
-  document.body.classList.add("modal-open");
-}
-
-function closeCertificateModal() {
-  certificateModal.classList.remove("show");
-  document.body.classList.remove("modal-open");
-  certificateModalImage.src = "";
-}
-
-certificateItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    const imageSrc = item.getAttribute("data-cert");
-    const title = item.getAttribute("data-title") || "Certificate Preview";
-    openCertificateModal(imageSrc, title);
-  });
-});
-
-certificateModalClose.addEventListener("click", closeCertificateModal);
-certificateModalOverlay.addEventListener("click", closeCertificateModal);
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && certificateModal.classList.contains("show")) {
-    closeCertificateModal();
-  }
-});
