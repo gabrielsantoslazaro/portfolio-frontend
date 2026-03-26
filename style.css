@@ -12,6 +12,7 @@ body{
   animation: pageFade 0.9s ease forwards;
 }
 
+/* HERO / TOP SECTION */
 .profile-header{
   width: min(900px, 100%);
   max-width: 100%;
@@ -163,7 +164,7 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
   width: 700px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .right-column{
@@ -805,7 +806,7 @@ body:not(.dark-mode) .send-btn.active:hover{
 .gallery-container{
   width: min(910px, 100%);
   max-width: 100%;
-  margin: 10px auto 0;
+  margin: 24px auto 0;
   background: #ffffff;
   border: 1px solid #e5e5e5;
   box-sizing: border-box;
@@ -1881,22 +1882,16 @@ textarea:-webkit-autofill{
 }
 
 .gallery-container{
-  width: 90%;
+  width: 100%;
   max-width: 100%;
-  margin: 14px auto 0;
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
+  left: 0;
+  margin: 16px auto 0;
+  padding: 16px 14px 14px;
   box-sizing: border-box;
-  padding: 22px 22px 18px;
-  position: relative;
-  margin-left: 120px;
 }
 
 .gallery-container h2{
-  margin: 0 0 14px;
-  font-size: 22px;
-  font-weight: 700;
-  color: #111;
+  font-size: 20px;
 }
 
 .gallery-slider{
