@@ -804,15 +804,14 @@ body:not(.dark-mode) .send-btn.active:hover{
 }
 
 .gallery-container{
-  width: min(910px, 100%);
+  width: 90%;
   max-width: 100%;
-  margin: 24px auto 0;
+  margin: 14px 0 0 120px;
   background: #ffffff;
   border: 1px solid #e5e5e5;
   box-sizing: border-box;
   padding: 22px 22px 18px;
   position: relative;
-  left: -6px;
 }
 
 .gallery-container h2{
