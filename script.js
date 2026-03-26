@@ -396,11 +396,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const certificateModalClose = document.getElementById("certificateModalClose");
   const certificateModalImage = document.getElementById("certificateModalImage");
 
-function openCertificateModal(imageSrc, title) {
+function openCertificateModal(imageSrc) {
   if (!certificateModal || !certificateModalImage) return;
 
   certificateModalImage.src = imageSrc;
-  certificateModalImage.alt = title;
+  certificateModalImage.alt = "Certificate Preview";
   certificateModal.classList.add("show");
   document.body.classList.add("modal-open");
 }
