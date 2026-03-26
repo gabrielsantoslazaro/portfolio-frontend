@@ -1149,59 +1149,6 @@ textarea:-webkit-autofill{
   border: 1px solid #d9d9d9;
 }
 
-.certificates-container {
-  width: 90%;
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
-  box-sizing: border-box;
-  padding: 18px 14px 14px;
-  margin-left: 120px;
-}
-
-.certificates-container h2 {
-  margin: 0 0 14px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #111;
-}
-
-.certificates-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.certificate-item {
-  position: relative;
-  display: block;
-  padding: 12px 14px;
-  border-top: 1px solid #f0f0f0;
-  cursor: pointer;
-  overflow: hidden;
-  background: transparent;
-  transition: background-color 0.25s ease;
-}
-
-.certificate-item::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  background: #e9e9e9;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  z-index: 0;
-}
-
-.certificate-item:hover::after {
-  opacity: 1;
-}
-
-.certificate-item h3,
-.certificate-item p {
-  position: relative;
-  z-index: 1;
-}
-
 .certificate-modal {
   position: fixed;
   inset: 0;
