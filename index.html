@@ -91,18 +91,18 @@
           <input type="text" name="subject" placeholder="Enter the subject" id="emailSubject" required>
         </div>
 
-       <div id="recaptchaWrap" class="recaptcha-wrap">
+        <div class="form-field">
+          <label for="emailMessage">Message</label>
+          <textarea name="message" placeholder="Write your message here..." id="emailMessage" rows="6" required></textarea>
+        </div>
+
+        <div id="recaptchaWrap" class="recaptcha-wrap">
           <div
           class="g-recaptcha"
           data-sitekey="6LfZW5ssAAAAAP3lTFeOynMuHmXaEiHilinp4R5J"
           data-expired-callback="onCaptchaExpired"
           ></div>
       </div>
-
-        <div class="form-field">
-          <label for="emailMessage">Message</label>
-          <textarea name="message" placeholder="Write your message here..." id="emailMessage" rows="6" required></textarea>
-        </div>
 
         <button type="submit" class="email-submit-btn">Send Message</button>
         <p id="emailFormStatus" class="email-form-status"></p>
