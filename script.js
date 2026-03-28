@@ -460,10 +460,33 @@ function openEmailModal() {
 
 function closeEmailModal() {
   const modal = document.getElementById("emailModal");
+  const status = document.getElementById("emailFormStatus");
+  const recaptchaWrap = document.getElementById("recaptchaWrap");
+  const form = document.getElementById("emailForm");
+
   if (!modal) return;
 
   modal.classList.remove("show");
   document.body.classList.remove("email-modal-open");
+
+  if (form) {
+    form.reset();
+  }
+
+  if (status) {
+    status.textContent = "";
+    status.classList.remove("success", "error");
+  }
+
+  if (recaptchaWrap) {
+    recaptchaWrap.classList.remove("show");
+  }
+
+  if (typeof grecaptcha !== "undefined") {
+    try {
+      grecaptcha.reset();
+    } catch (e) {}
+  }
 }
 
 async function submitEmailForm(event) {
@@ -472,13 +495,28 @@ async function submitEmailForm(event) {
   const form = document.getElementById("emailForm");
   const status = document.getElementById("emailFormStatus");
   const submitBtn = form ? form.querySelector(".email-submit-btn") : null;
+  const recaptchaWrap = document.getElementById("recaptchaWrap");
 
   if (!form || !status || !submitBtn) return;
+
+  status.classList.remove("success", "error");
+
+  const captchaResponse =
+    typeof grecaptcha !== "undefined" ? grecaptcha.getResponse() : "";
+
+  if (!captchaResponse) {
+    if (recaptchaWrap && !recaptchaWrap.classList.contains("show")) {
+      recaptchaWrap.classList.add("show");
+    }
+
+    status.textContent = "Please complete the captcha first.";
+    status.classList.add("error");
+    return;
+  }
 
   const formData = new FormData(form);
 
   status.textContent = "Sending...";
-  status.classList.remove("success", "error");
   submitBtn.disabled = true;
 
   try {
@@ -492,22 +530,64 @@ async function submitEmailForm(event) {
 
     if (response.ok) {
       form.reset();
+
+      if (typeof grecaptcha !== "undefined") {
+        grecaptcha.reset();
+      }
+
+      if (recaptchaWrap) {
+        recaptchaWrap.classList.remove("show");
+      }
+
       status.textContent = "Message sent successfully.";
+      status.classList.remove("error");
       status.classList.add("success");
 
       setTimeout(() => {
         closeEmailModal();
         status.textContent = "";
-        status.classList.remove("success");
+        status.classList.remove("success", "error");
       }, 1400);
-    } else {
-      status.textContent = "Failed to send message. Please try again.";
-      status.classList.add("error");
-    }
-  } catch (error) {
-    status.textContent = "Network error. Please try again.";
-    status.classList.add("error");
-  } finally {
+} else {
+  if (typeof grecaptcha !== "undefined") {
+    grecaptcha.reset();
+  }
+
+  if (recaptchaWrap) {
+    recaptchaWrap.classList.remove("show");
+  }
+
+  status.textContent = "Failed to send message. Please try again.";
+  status.classList.remove("success");
+  status.classList.add("error");
+}
+} catch (error) {
+  if (typeof grecaptcha !== "undefined") {
+    grecaptcha.reset();
+  }
+
+  if (recaptchaWrap) {
+    recaptchaWrap.classList.remove("show");
+  }
+
+  status.textContent = "Network error. Please try again.";
+  status.classList.remove("success");
+  status.classList.add("error");
+} finally {
     submitBtn.disabled = false;
   }
+}
+
+function onCaptchaExpired() {
+  const status = document.getElementById("emailFormStatus");
+
+  if (typeof grecaptcha !== "undefined") {
+    grecaptcha.reset();
+  }
+
+if (status) {
+  status.textContent = "Captcha expired. Please verify again.";
+  status.classList.remove("success", "error");
+  status.classList.add("error");
+}
 }
