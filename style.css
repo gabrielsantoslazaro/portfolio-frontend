@@ -1297,6 +1297,28 @@ body.modal-open{
   overflow: hidden;
 }
 
+.recaptcha-wrap{
+  display: none;
+  margin: 14px 0 16px;
+  justify-content: center;
+}
+
+.recaptcha-wrap.show{
+  display: flex;
+}
+
+.email-form-status{
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.recaptcha-wrap .g-recaptcha{
+  display: inline-block;
+  align-items: center;
+}
+
 @media (max-width: 768px){
   .email-modal{
     padding: 14px;
