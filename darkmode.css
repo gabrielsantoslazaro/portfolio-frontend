@@ -711,3 +711,11 @@ body.dark-mode .motto-container{
   background: #171a21;
   border: 1px solid #39414f;
 }
+
+body.dark-mode .motto-container .tagline-label{
+  color: #6b7280;
+}
+
+body.dark-mode .motto-container .tagline-text{
+  color: #a9b0bb;
+}
