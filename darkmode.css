@@ -686,36 +686,27 @@ body.dark-mode .certificate-item:hover .certificate-info h4{
 }
 
 /* TAGLINE DARK MODE */
-
-body.dark-mode .tagline-label {
-  color: #6b7280;
-}
-
-body.dark-mode .tagline-text {
-  color: #ffffff;
-}
-
-body.dark-mode .tagline-dot {
-  background: #39414f;
-}
-
-body.dark-mode .tagline-dot.active {
-  background: #f5f7fa;
-}
-
-body.dark-mode .tagline-dot:hover {
-  background: #6b7280;
-}
-
 body.dark-mode .motto-container{
   background: #171a21;
   border: 1px solid #39414f;
 }
 
 body.dark-mode .motto-container .tagline-label{
-  color: #6b7280;
+  color: #f5f7fa;
 }
 
 body.dark-mode .motto-container .tagline-text{
   color: #a9b0bb;
+}
+
+body.dark-mode .motto-container .tagline-dot{
+  background: #39414f;
+}
+
+body.dark-mode .motto-container .tagline-dot.active{
+  background: #f5f7fa;
+}
+
+body.dark-mode .motto-container .tagline-dot:hover{
+  background: #6b7280;
 }
