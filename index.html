@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=5">
-  <link rel="apple-touch-icon" href="/favicon.png?v=5">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <title>Gabriel Lazaro - IT Student</title>
   <meta name="description" content="Official portfolio of Gabriel Lazaro, a Bachelor of Science in Information Technology student from Metro Manila, Philippines. Explore projects, tech stack, experience, and contact information.">
@@ -19,14 +19,14 @@
   <meta property="og:image" content="https://gabriellazaro.site/light.png">
 
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="responsive.css" />
   <link rel="stylesheet" href="darkmode.css" />
 </head>
 <body>
 
   <div class="theme-toggle-wrap">
     <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">
-      <span class="theme-icon">🌙</span>
-      <span class="theme-text">Dark</span>
+      <span class="theme-icon" aria-hidden="true"></span>
     </button>
   </div>
 
@@ -62,7 +62,7 @@
 
         <button type="button" class="ghost download-btn" onclick="downloadCV()">
           <img src="Download.png" class="btn-icon" alt="">
-          Download CV <span class="arrow">›</span>
+          Download CV <span class="arrow">&rsaquo;</span>
         </button>
       </div>
     </div>
@@ -70,7 +70,7 @@
 
   <div class="email-modal" id="emailModal">
     <div class="email-modal-card">
-      <button class="email-modal-close" type="button" onclick="closeEmailModal()" aria-label="Close email form">×</button>
+      <button class="email-modal-close" type="button" onclick="closeEmailModal()" aria-label="Close email form">&times;</button>
 
       <h2>Send Email</h2>
       <p class="email-modal-subtext">Feel free to send me a message here.</p>
@@ -98,11 +98,11 @@
 
         <div id="recaptchaWrap" class="recaptcha-wrap">
           <div
-          class="g-recaptcha"
-          data-sitekey="6LfZW5ssAAAAAP3lTFeOynMuHmXaEiHilinp4R5J"
-          data-expired-callback="onCaptchaExpired"
+            class="g-recaptcha"
+            data-sitekey="6LfZW5ssAAAAAP3lTFeOynMuHmXaEiHilinp4R5J"
+            data-expired-callback="onCaptchaExpired"
           ></div>
-      </div>
+        </div>
 
         <button type="submit" class="email-submit-btn">Send Message</button>
         <p id="emailFormStatus" class="email-form-status"></p>
@@ -112,7 +112,6 @@
 
   <div class="about-id-section">
     <div class="left-column">
-
       <div class="about-container">
         <h2>About</h2>
 
@@ -122,8 +121,8 @@
         </p>
 
         <p>
-         I have experience in web development and building web-based applications. I like creating simple, functional, and
-         user-friendly systems while continuously improving my problem-solving and technical skills.
+          I have experience in web development and building web-based applications. I like creating simple, functional, and
+          user-friendly systems while continuously improving my problem-solving and technical skills.
         </p>
 
         <p>
@@ -143,6 +142,7 @@
             <span>CSS</span>
             <span>JavaScript</span>
             <span>Tailwind CSS</span>
+            <span>Prettier</span>
           </div>
         </div>
 
@@ -153,6 +153,8 @@
             <span>Express.js</span>
             <span>PHP</span>
             <span>Python</span>
+            <span>MySQL</span>
+            <span>XAMPP</span>
           </div>
         </div>
 
@@ -166,14 +168,6 @@
         </div>
 
         <div class="tech-stack-section">
-          <h4>Database / Server</h4>
-          <div class="tech-tags">
-            <span>MySQL</span>
-            <span>XAMPP</span>
-          </div>
-        </div>
-
-        <div class="tech-stack-section">
           <h4>AI / Tools</h4>
           <div class="tech-tags">
             <span>Google GenAI</span>
@@ -181,7 +175,8 @@
             <span>CORS</span>
             <span>npm</span>
             <span>Visual Studio Code</span>
-            <span>Git / GitHub</span>
+            <span>Git</span>
+            <span>GitHub</span>
           </div>
         </div>
       </div>
@@ -201,61 +196,67 @@
             <p>AI-powered study assistant tool</p>
             <span class="project-domain">github.io/StudyMate-AI/</span>
           </a>
-          
+
+          <a href="https://nocturnewellnessstudio-create.github.io/Studio/about.html" target="_blank" rel="noopener noreferrer" class="project-card small-project-card">
+            <h3>Nocturne Wellness Studio</h3>
+            <p>Wellness and health-focused web application</p>
+            <span class="project-domain">nocturnewellnessstudio-create.github.io</span>
+          </a>
         </div>
       </div>
 
-<div class="certificates-container">
-  <h2>Certifications</h2>
+      <div class="certificates-container">
+        <div class="certificates-header">
+          <h2>Certifications</h2>
+          <a href="certificates.html" class="view-all-btn">View All</a>
+        </div>
 
-  <div class="certificates-list">
-    <div
-      class="certificate-item"
-      data-cert="Oceans.jfif"
-      data-title="AI for Oceans Hour of Code"
-    >
-      <div class="certificate-info">
-        <h4>AI for Oceans Hour of Code</h4>
-        <p>Code.org · 2025</p>
+        <div class="certificates-list">
+          <div
+            class="certificate-item"
+            data-cert="Oceans.jfif"
+            data-title="AI for Oceans Hour of Code"
+          >
+            <div class="certificate-info">
+              <h4>AI for Oceans Hour of Code</h4>
+              <p>Code.org</p>
+            </div>
+          </div>
+
+          <div
+            class="certificate-item"
+            data-cert="Hour-of-code.jfif"
+            data-title="AI Ready ASEAN Hour of Code Session"
+          >
+            <div class="certificate-info">
+              <h4>AI Ready ASEAN Hour of Code Session</h4>
+              <p>AI Ready ASEAN</p>
+            </div>
+          </div>
+
+          <div
+            class="certificate-item"
+            data-cert="API.jpg"
+            data-title="APIs and Fetch: Connect Your Web App to Real Data"
+          >
+            <div class="certificate-info">
+              <h4>APIs and Fetch: Connect Your Web App to Real Data</h4>
+              <p>Programming Computer Programming Services</p>
+            </div>
+          </div>
+
+          <div
+            class="certificate-item"
+            data-cert="ethical-hacking.jfif"
+            data-title="Ethical Hacking and Responsible Disclosure"
+          >
+            <div class="certificate-info">
+              <h4>Ethical Hacking and Responsible Disclosure</h4>
+              <p>West Visayas State University</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div
-      class="certificate-item"
-      data-cert="Hour-of-code.jfif"
-      data-title="AI Ready ASEAN Hour of Code Session"
-    >
-      <div class="certificate-info">
-        <h4>AI Ready ASEAN Hour of Code Session</h4>
-        <p>AI Ready ASEAN · October 2025</p>
-      </div>
-    </div>
-
-    <div
-  class="certificate-item"
-  data-cert="API.jpg"
-  data-title="APIs and Fetch: Connect Your Web App to Real Data"
->
-  <div class="certificate-info">
-    <h4>APIs and Fetch: Connect Your Web App to Real Data</h4>
-    <p>Ethel Programming Computer Programming Services · March 2026</p>
-  </div>
-</div>
-
-    <div
-      class="certificate-item"
-      data-cert="ethical-hacking.jfif"
-      data-title="Ethical Hacking and Responsible Disclosure"
-    >
-      <div class="certificate-info">
-        <h4>Ethical Hacking and Responsible Disclosure</h4>
-        <p>West Visayas State University · October 2025</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
     </div>
 
     <div class="right-column">
@@ -324,43 +325,41 @@
         </div>
       </div>
 
-<div class="social-links-container">
-  <h2>Social Links</h2>
+      <div class="social-links-container">
+        <h2>Social Links</h2>
 
-  <div class="social-links-list">
-    <a href="https://www.linkedin.com/in/gabrielsantoslazaro/" target="_blank" rel="noopener noreferrer" class="social-link-item">
-      <img src="linkedin-logo.png" alt="LinkedIn">
-      <span>LinkedIn</span>
-    </a>
+        <div class="social-links-list">
+          <a href="https://www.linkedin.com/in/gabrielsantoslazaro/" target="_blank" rel="noopener noreferrer" class="social-link-item">
+            <img src="linkedin-logo.png" alt="LinkedIn">
+            <span>LinkedIn</span>
+          </a>
 
-    <a href="https://github.com/gabrielsantoslazaro" target="_blank" rel="noopener noreferrer" class="social-link-item">
-      <img src="github-logo.png" alt="GitHub">
-      <span>GitHub</span>
-    </a>
+          <a href="https://github.com/gabrielsantoslazaro" target="_blank" rel="noopener noreferrer" class="social-link-item">
+            <img src="github-logo.png" alt="GitHub">
+            <span>GitHub</span>
+          </a>
 
-    <a href="https://www.facebook.com/xtm.gabriel09" target="_blank" rel="noopener noreferrer" class="social-link-item">
-      <img src="facebook-logo.png" alt="Facebook">
-      <span>Facebook</span>
-    </a>
-  </div>
-</div>
+          <a href="https://www.facebook.com/xtm.gabriel09" target="_blank" rel="noopener noreferrer" class="social-link-item">
+            <img src="facebook-logo.png" alt="Facebook">
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
 
-<div class="motto-container">
-  <div class="tagline-section">
-    <p class="tagline-label">Motto</p>
-    <p class="tagline-text" id="taglineText">Building one project at a time.</p>
-    <div class="tagline-dots" id="taglineDots">
-      <button class="tagline-dot active" onclick="switchTagline(0)" aria-label="Tagline 1"></button>
-      <button class="tagline-dot" onclick="switchTagline(1)" aria-label="Tagline 2"></button>
-      <button class="tagline-dot" onclick="switchTagline(2)" aria-label="Tagline 3"></button>
-      <button class="tagline-dot" onclick="switchTagline(3)" aria-label="Tagline 4"></button>
-      <button class="tagline-dot" onclick="switchTagline(4)" aria-label="Tagline 5"></button>
-      <button class="tagline-dot" onclick="switchTagline(5)" aria-label="Tagline 6"></button>
-      <button class="tagline-dot" onclick="switchTagline(6)" aria-label="Tagline 7"></button>
-    </div>
-  </div>
-</div>
-
+      <div class="motto-container">
+        <div class="tagline-section">
+          <p class="tagline-label">Motto</p>
+          <p class="tagline-text" id="taglineText">Building one project at a time.</p>
+          <div class="tagline-dots" id="taglineDots">
+            <button class="tagline-dot active" onclick="switchTagline(0)" aria-label="Tagline 1"></button>
+            <button class="tagline-dot" onclick="switchTagline(1)" aria-label="Tagline 2"></button>
+            <button class="tagline-dot" onclick="switchTagline(2)" aria-label="Tagline 3"></button>
+            <button class="tagline-dot" onclick="switchTagline(3)" aria-label="Tagline 4"></button>
+            <button class="tagline-dot" onclick="switchTagline(4)" aria-label="Tagline 5"></button>
+            <button class="tagline-dot" onclick="switchTagline(5)" aria-label="Tagline 6"></button>
+            <button class="tagline-dot" onclick="switchTagline(6)" aria-label="Tagline 7"></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -369,7 +368,7 @@
     <h2>Gallery</h2>
 
     <div class="gallery-slider-wrap">
-      <button class="gallery-nav gallery-prev" onclick="scrollGallery(-1)" aria-label="Previous">‹</button>
+      <button class="gallery-nav gallery-prev" onclick="scrollGallery(-1)" aria-label="Previous">&#8249;</button>
 
       <div class="gallery-slider" id="gallerySlider">
         <img src="1.jfif" alt="Gallery Image 1" class="gallery-img">
@@ -384,7 +383,7 @@
         <img src="10.jfif" alt="Gallery Image 10" class="gallery-img">
       </div>
 
-      <button class="gallery-nav gallery-next" onclick="scrollGallery(1)" aria-label="Next">›</button>
+      <button class="gallery-nav gallery-next" onclick="scrollGallery(1)" aria-label="Next">&#8250;</button>
     </div>
   </div>
 
@@ -406,7 +405,7 @@
         </div>
       </div>
 
-      <button class="close-chat" onclick="toggleChat()">×</button>
+      <button class="close-chat" onclick="toggleChat()">&times;</button>
     </div>
 
     <div class="chat-body" id="chatBody">
@@ -415,7 +414,7 @@
         <div class="message-group">
           <div class="sender-name">Gabriel Lazaro</div>
           <div class="message bot-message">
-            Hi there! 👋🏻 Thanks for visiting my website. Feel free to ask me anything about my portfolio, projects, or skills.
+            Hi there! &#128075;&#127995; Thanks for visiting my website. Feel free to ask me anything about my portfolio, projects, or skills.
           </div>
         </div>
       </div>
@@ -424,7 +423,7 @@
     <div class="chat-footer-wrap">
       <div class="chat-footer">
         <input type="text" placeholder="Type a message..." id="chatInput" maxlength="1000">
-        <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>➜</button>
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>&#10148;</button>
       </div>
 
       <div class="chat-footer-bottom">
@@ -435,25 +434,24 @@
   </div>
 
   <footer class="site-footer">
-  <p>© 2026 Gabriel Lazaro. All Rights Reserved.</p>
-</footer>
+    <p>&copy; 2026 Gabriel Lazaro. All Rights Reserved.</p>
+  </footer>
 
-<div class="certificate-modal" id="certificateModal">
-  <div class="certificate-modal-overlay" id="certificateModalOverlay"></div>
+  <div class="certificate-modal" id="certificateModal">
+    <div class="certificate-modal-overlay" id="certificateModalOverlay"></div>
 
-  <button class="certificate-modal-close" id="certificateModalClose" aria-label="Close modal">
-    &times;
-  </button>
+    <button class="certificate-modal-close" id="certificateModalClose" aria-label="Close modal">
+      &times;
+    </button>
 
-  <div class="certificate-modal-content">
-    <div class="certificate-modal-image-wrap">
-      <img id="certificateModalImage" src="" alt="Certificate Preview">
+    <div class="certificate-modal-content">
+      <div class="certificate-modal-image-wrap">
+        <img id="certificateModalImage" src="" alt="Certificate Preview">
+      </div>
     </div>
   </div>
-</div>
 
-<script src="script.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  
+  <script src="script.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
