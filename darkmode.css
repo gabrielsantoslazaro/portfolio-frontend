@@ -166,7 +166,7 @@ body.dark-mode .send-btn:disabled{
 .theme-toggle::before{
   content: "";
   left: 9px;
-  background-image: url("Logo/moon.png");
+  background-image: url("moon.png");
   opacity: 0.45;
   width: 20px;
   height: 20px;
@@ -175,7 +175,7 @@ body.dark-mode .send-btn:disabled{
 .theme-toggle::after{
   content: "";
   right: 11px;
-  background-image: url("Logo/sun.png");
+  background-image: url("sun.png");
   opacity: 1;
 }
 
