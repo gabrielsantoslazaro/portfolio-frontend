@@ -1,0 +1,206 @@
+.certifications-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.certifications-page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 60px);
+  overflow-x: hidden;
+}
+
+.certifications-page .container {
+  flex: 1 0 auto;
+  width: min(900px, 100%);
+  max-width: 100%;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.25s;
+  transition: opacity 0.32s ease, transform 0.32s ease, filter 0.32s ease;
+}
+
+.certifications-page .back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--btn-text, #111);
+  background: var(--btn-bg, #fff);
+  border: 1px solid var(--btn-border, #111);
+  cursor: pointer;
+  padding: 10px 16px;
+  margin-bottom: 14px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.certifications-page .back-btn:hover {
+  background: var(--btn-hover-bg, #111);
+  color: var(--btn-hover-text, #fff);
+  transform: translateY(-1px);
+}
+
+.certifications-page .page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text, #111);
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.certifications-page .cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.tech-stack-page .tech-stack-page-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.tech-stack-page .tech-stack-page-card {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border, #e5e5e5);
+  padding: 18px 18px 16px;
+}
+
+.tech-stack-page .tech-stack-page-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text, #111);
+  margin-bottom: 14px;
+}
+
+.tech-stack-page .tech-stack-page-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-stack-page .tech-stack-page-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 12px;
+  background: var(--card, #fff);
+  border: 1px solid var(--border, #d9d9d9);
+  color: var(--text, #111);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.certifications-page .cert-card {
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border, #e5e5e5);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text, #111);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  appearance: none;
+  cursor: pointer;
+}
+
+.certifications-page .cert-card:hover {
+  border-color: #d9d9d9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+
+.certifications-page .cert-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text, #111);
+}
+
+.certifications-page .cert-issuer {
+  font-size: 13px;
+  color: var(--muted, #666);
+}
+
+.certifications-page .site-footer.cert-footer {
+  width: 100%;
+  max-width: none;
+  margin-top: auto !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding-top: 100px;
+}
+
+body.cert-route{
+  min-height: auto;
+  padding-bottom: 0;
+}
+
+.certifications-page .site-footer.cert-footer p {
+  width: 450px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.dark-mode .certifications-page .cert-card:hover {
+  border-color: #39414f;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+body.dark-mode .tech-stack-page .tech-stack-page-card {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 768px) {
+  .certifications-page .back-btn {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 13px;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-page .back-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .certifications-page .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-stack-page .tech-stack-page-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes pageFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
