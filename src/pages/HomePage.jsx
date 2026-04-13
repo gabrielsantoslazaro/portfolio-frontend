@@ -606,9 +606,9 @@ export default function HomePage({ theme, certificatePreview, onOpenCertificate,
     <Link to="/tech-stack" className="view-all-btn-tech">View All</Link>
   </div>
   {TECH_STACKS.map((section) => (
-    <div key={section.category} className="tech-stack-section">
+      <div key={section.category} className="tech-stack-section">
       <h4>{section.category}</h4>
-      <div className="tech-tags">
+      <div className="tech-tags tech-tags-preview">
         {section.items.map((item) => (
           <span key={`${section.category}-${item}`}>{item}</span>
         ))}

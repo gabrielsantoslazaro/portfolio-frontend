@@ -36,6 +36,8 @@ function ThemeToggle({ theme, onToggle }) {
 export default function App() {
   const [theme, setTheme] = useState("light");
   const [certificatePreview, setCertificatePreview] = useState("");
+  const location = useLocation();
+  const showThemeToggle = ["/", "/certifications", "/projects", "/tech-stack"].includes(location.pathname);
 
   useEffect(() => {
     document.body.classList.toggle("dark-mode", theme === "dark");
@@ -48,10 +50,12 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
-      <ThemeToggle
-        theme={theme}
-        onToggle={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
-      />
+      {showThemeToggle ? (
+        <ThemeToggle
+          theme={theme}
+          onToggle={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
+        />
+      ) : null}
 
       <Routes>
         <Route

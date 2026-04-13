@@ -276,6 +276,15 @@ body:not(.dark-mode) .ghost:hover .btn-icon{
   gap: 8px;
 }
 
+.tech-tags-preview{
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.tech-tags-preview span{
+  flex: 0 0 auto;
+}
+
 .tech-tags span{
   display: inline-flex;
   align-items: center;
@@ -802,13 +811,13 @@ body:not(.dark-mode) .send-btn.active:hover{
   background: #ffffff;
   border: 1px solid #e5e5e5;
   box-sizing: border-box;
-  padding: 14px 16px;
+  padding: 20px 22px;
   margin-left: 40px;
   min-height: 130px;
 }
 
 .social-links-container h2{
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   font-size: 16px;
   font-weight: 700;
   color: #111;
@@ -822,10 +831,10 @@ body:not(.dark-mode) .send-btn.active:hover{
 .social-link-item{
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   color: #111;
-  padding: 7px 0;
+  padding: 11px 0;
   border-top: 1px solid #f0f0f0;
   transition: opacity 0.2s ease;
 }

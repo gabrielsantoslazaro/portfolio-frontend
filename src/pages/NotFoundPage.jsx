@@ -10,10 +10,12 @@ export default function NotFoundPage() {
       />
       <div
         style={{
-          minHeight: "100vh",
+          position: "fixed",
+          inset: 0,
           display: "grid",
           placeItems: "center",
-          padding: "32px 20px"
+          padding: "20px",
+          overflow: "hidden"
         }}
       >
         <div
