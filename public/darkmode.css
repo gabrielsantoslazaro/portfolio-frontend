@@ -405,12 +405,22 @@ body.dark-mode .student-id{
 }
 
 body.dark-mode .send-btn{
-  background: #3a4250;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   color: #ffffff;
 }
 
+body.dark-mode .send-btn.active{
+  background: var(--border);
+  border-color: var(--input-border);
+}
+
 body.dark-mode .send-btn:hover{
-  background: #505a6b;
+  background: var(--border);
+}
+
+body.dark-mode .send-btn.active:hover{
+  background: var(--input-border);
 }
 
 /* SCROLLBAR */
