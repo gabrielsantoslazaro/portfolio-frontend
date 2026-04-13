@@ -518,6 +518,19 @@ export default function HomePage({ theme, certificatePreview, onOpenCertificate,
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [currentTagline, setCurrentTagline] = useState(0);
   const isDark = theme === "dark";
+  const techStackPreviewLimits = {
+    Frontend: 6,
+    Backend: 6,
+    "Programming Languages": 3,
+    "AI / Tools": 7
+  };
+
+  function getSocialMeta(url) {
+    if (url.includes("linkedin.com")) return "linkedin.com/in/gabrielsantoslazaro";
+    if (url.includes("github.com")) return "github.com/gabrielsantoslazaro";
+    if (url.includes("facebook.com")) return "facebook.com/xtm.gabriel09";
+    return url;
+  }
 
   useEffect(() => {
     document.body.classList.add("home-route");
@@ -609,7 +622,7 @@ export default function HomePage({ theme, certificatePreview, onOpenCertificate,
       <div key={section.category} className="tech-stack-section">
       <h4>{section.category}</h4>
       <div className="tech-tags tech-tags-preview">
-        {section.items.map((item) => (
+        {section.items.slice(0, techStackPreviewLimits[section.category] ?? section.items.length).map((item) => (
           <span key={`${section.category}-${item}`}>{item}</span>
         ))}
       </div>
@@ -684,14 +697,17 @@ export default function HomePage({ theme, certificatePreview, onOpenCertificate,
 
             <div className="social-links-container">
               <h2>Social Links</h2>
-              <div className="social-links-list">
-                {SOCIAL_LINKS.map((item) => (
-                  <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="social-link-item">
-                    <img src={item.icon} alt={item.label} loading="lazy" decoding="async" />
-                    <span>{item.label}</span>
-                  </a>
-                ))}
-              </div>
+                <div className="social-links-list">
+                  {SOCIAL_LINKS.map((item) => (
+                    <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="social-link-item">
+                      <img src={item.icon} alt={item.label} loading="lazy" decoding="async" />
+                      <div className="social-link-copy">
+                        <span>{item.label}</span>
+                        <small>{getSocialMeta(item.href)}</small>
+                      </div>
+                    </a>
+                  ))}
+                </div>
             </div>
 
             <div className="motto-container">

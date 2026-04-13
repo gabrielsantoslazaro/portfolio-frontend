@@ -824,41 +824,53 @@ body:not(.dark-mode) .send-btn.active:hover{
 }
 
 .social-links-list{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 12px;
 }
 
 .social-link-item{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   text-decoration: none;
   color: #111;
-  padding: 11px 0;
-  border-top: 1px solid #f0f0f0;
-  transition: opacity 0.2s ease;
-}
-
-.social-links-list .social-link-item:first-child{
-  border-top: none;
-  padding-top: 0;
+  padding: 14px 14px 12px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  box-sizing: border-box;
 }
 
 .social-link-item:hover{
-  opacity: 0.75;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+  border-color: #d9d9d9;
 }
 
 .social-link-item img{
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
   flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.social-link-copy{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .social-link-item span{
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: #111;
+}
+
+.social-link-copy small{
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #666;
 }
 
 .social-link-item,
