@@ -980,7 +980,7 @@ body:not(.dark-mode) .send-btn.active:hover{
   height: auto;
   border-radius: 12px;
   object-fit: contain;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  box-shadow: none;
 }
 
 .lightbox-close{
@@ -2173,20 +2173,6 @@ body.modal-open{
   right: -6px;
 }
 
-.lightbox-nav{
-  width: 42px;
-  height: 60px;
-  font-size: 32px;
-}
-
-.lightbox-prev{
-  left: 10px;
-}
-
-.lightbox-next{
-  right: 10px;
-}
-
   .certificates-container {
     order: 5;
     width: 100%;
@@ -2409,20 +2395,6 @@ body.modal-open{
 
 .gallery-next{
   right: -4px;
-}
-
-.lightbox-nav{
-  width: 38px;
-  height: 54px;
-  font-size: 28px;
-}
-
-.lightbox-prev{
-  left: 8px;
-}
-
-.lightbox-next{
-  right: 8px;
 }
 
 .certificates-container {

@@ -1063,7 +1063,7 @@ body:not(.dark-mode) .send-btn.active:hover{
   height: auto;
   border-radius: 12px;
   object-fit: contain;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  box-shadow: none;
 }
 
 .lightbox-image:not([src]),
@@ -1101,12 +1101,12 @@ body:not(.dark-mode) .send-btn.active:hover{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 52px;
-  height: 72px;
+  width: clamp(38px, 4vw, 52px);
+  height: clamp(54px, 6vw, 72px);
   border: none;
   background: rgba(255,255,255,0.14);
   color: #ffffff;
-  font-size: 40px;
+  font-size: clamp(28px, 3vw, 40px);
   line-height: 1;
   cursor: pointer;
   display: flex;
@@ -1116,11 +1116,11 @@ body:not(.dark-mode) .send-btn.active:hover{
 }
 
 .lightbox-prev{
-  left: 20px;
+  left: clamp(8px, 1.5vw, 20px);
 }
 
 .lightbox-next{
-  right: 20px;
+  right: clamp(8px, 1.5vw, 20px);
 }
 
 .lightbox-nav:hover{
