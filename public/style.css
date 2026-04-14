@@ -1296,7 +1296,14 @@ body.lightbox-open{
   margin: 2px auto 0;
 }
 
-.email-submit-btn:hover{
+@media (hover: hover) and (pointer: fine){
+  .email-submit-btn:hover{
+    background: #111;
+    color: #fff;
+  }
+}
+
+.email-submit-btn:active{
   background: #111;
   color: #fff;
 }
@@ -1312,6 +1319,7 @@ body.lightbox-open{
   font-size: 13px;
   opacity: 1;
   transition: opacity 0.35s ease;
+  will-change: opacity;
 }
 
 .email-form-status.success{
@@ -1612,6 +1620,10 @@ body.modal-open{
   line-height: 1.4;
 }
 
+.email-form-status.is-fading{
+  opacity: 0 !important;
+}
+
 .recaptcha-wrap .g-recaptcha{
   display: inline-block;
   align-items: center;
@@ -1707,9 +1719,11 @@ body.modal-open{
     width: min(148px, 100%);
   }
 
-  .email-submit-btn:hover{
-    background: #111;
-    color: #fff;
+  @media (hover: hover) and (pointer: fine){
+    .email-submit-btn:hover{
+      background: #111;
+      color: #fff;
+    }
   }
 }
 
