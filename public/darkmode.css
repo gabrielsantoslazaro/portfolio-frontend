@@ -284,13 +284,14 @@ body.dark-mode .chat-float-icon{
 }
 
 body.dark-mode .chat-float{
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+  border: none;
+  box-shadow: none;
 }
 
 body.dark-mode .chat-float:hover{
   background: #e7eaee;
   color: #17191c;
+  box-shadow: none;
   opacity: 1;
 }
 
@@ -736,6 +737,8 @@ body.dark-mode .social-link-item img{
 
 .email-modal-close{
   color: var(--text);
+  background: transparent;
+  border: none;
 }
 
 .email-form input,
@@ -753,7 +756,7 @@ body.dark-mode .social-link-item img{
 .email-submit-btn{
   background: var(--btn-bg);
   color: var(--btn-text);
-  border: 1px solid var(--btn-border);
+  border: 1px solid var(--input-border);
 }
 
 .email-submit-btn:hover{

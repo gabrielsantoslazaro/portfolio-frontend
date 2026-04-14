@@ -46,10 +46,9 @@ function EmailModal({ isOpen, onClose }) {
   const recaptchaWidgetIdRef = useRef(null);
   const [statusText, setStatusText] = useState("");
   const [statusType, setStatusType] = useState("");
-  const [showRecaptcha, setShowRecaptcha] = useState(false);
+  const [showRecaptcha, setShowRecaptcha] = useState(true);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
-  const [isClosing, setIsClosing] = useState(false);
   
 useEffect(() => {
   if (isOpen) return;
@@ -58,7 +57,6 @@ useEffect(() => {
     resetForm();
     setStatusText("");
     setStatusType("");
-    setIsClosing(false);
   }, 250);
 
   return () => clearTimeout(timeout);
@@ -149,7 +147,7 @@ function handleNameChange(e) {
 
 function resetForm(keepStatus = false) {
   formRef.current?.reset();
-  setShowRecaptcha(false);
+  setShowRecaptcha(true);
   setName("");
   setMessage("");
 
@@ -166,11 +164,7 @@ function resetForm(keepStatus = false) {
 }
 
 function handleClose() {
-  setIsClosing(true);
-
-  setTimeout(() => {
-    onClose();
-  }, 200); // match CSS transition time
+  onClose();
 }
 
 async function handleSubmit(event) {
@@ -227,38 +221,40 @@ if (response.ok) {
   }
 
   return (
-    <div className={`email-modal${isOpen ? " show" : ""}${isClosing ? " closing" : ""}`}>
+    <div className={`email-modal${isOpen ? " show" : ""}`}>
       <div className="email-modal-card">
         <button className="email-modal-close" type="button" onClick={handleClose} aria-label="Close email form">
           &times;
         </button>
-        <h2>Send Email</h2>
-        <p className="email-modal-subtext">Feel free to send me a message here.</p>
+        <h2>Send a message</h2>
+        <p className="email-modal-subtext">Feel free to reach out anytime.</p>
 
         <form id="emailForm" className="email-form" ref={formRef} onSubmit={handleSubmit}>
-          <div className="form-field">
-            <label htmlFor="emailName">Name</label>
-            <input ref={firstInputRef} type="text" name="name" placeholder="Enter your name" maxLength="40" id="emailName" required value={name} onChange={handleNameChange} />
-          </div>
-          <div className="form-field">
-            <label htmlFor="emailAddress">Email</label>
-            <input type="email" name="email" placeholder="yourname@example.com" maxLength="50" id="emailAddress" required />
+          <div className="form-row">
+            <div className="form-field">
+              <label htmlFor="emailName">Name</label>
+              <input ref={firstInputRef} type="text" name="name" placeholder="Your name" maxLength="40" id="emailName" required value={name} onChange={handleNameChange} />
+            </div>
+            <div className="form-field">
+              <label htmlFor="emailAddress">Email</label>
+              <input type="email" name="email" placeholder="you@example.com" maxLength="50" id="emailAddress" required />
+            </div>
           </div>
           <div className="form-field">
             <label htmlFor="emailSubject">Subject</label>
-            <input type="text" name="subject" placeholder="Enter the subject" id="emailSubject" maxLength="100" required />
+            <input type="text" name="subject" placeholder="What's this about?" id="emailSubject" maxLength="100" required />
           </div>
           <div className="form-field">
             <label htmlFor="emailMessage">Message</label>
             <textarea name="message" placeholder="Write your message here..." id="emailMessage" rows="6" required maxLength="500" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
-              <div className="char-counter">
-                    {message.length}/500
-              </div>
+            <div className="char-counter">
+              {message.length}/500
+            </div>
           </div>
           <div id="recaptchaWrap" className={`recaptcha-wrap${showRecaptcha ? " show" : ""}`}>
             <div ref={recaptchaRef} className="g-recaptcha"></div>
           </div>
-          <button type="submit" className="email-submit-btn">Send Message</button>
+          <button type="submit" className="email-submit-btn">Send message</button>
           <p id="emailFormStatus" className={`email-form-status${statusType ? ` ${statusType}` : ""}`}>{statusText}</p>
         </form>
       </div>
@@ -523,13 +519,13 @@ export default function HomePage({ theme, certificatePreview, onOpenCertificate,
   function getTechStackPreviewLimit(category) {
     if (viewportWidth <= 768) {
       const mobileLimits = {
-        Frontend: 5,
-        Backend: 5,
+        Frontend: 4,
+        Backend: 4,
         "Programming Languages": 3,
-        "AI / Tools": 5
+        "AI / Tools": 4
       };
 
-      return mobileLimits[category] ?? 5;
+      return mobileLimits[category] ?? 4;
     }
 
     if (viewportWidth <= 1024) {
