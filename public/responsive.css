@@ -1066,6 +1066,17 @@ body.lightbox-open{
   padding: 28px 28px 26px;
   position: relative;
   box-shadow: 0 18px 50px rgba(0,0,0,0.16);
+  opacity: 0;
+  transform: translateY(14px) scale(0.985);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.email-modal.show .email-modal-card{
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .email-modal-card h2{
