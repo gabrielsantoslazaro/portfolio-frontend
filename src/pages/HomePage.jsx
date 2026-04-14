@@ -56,6 +56,7 @@ function EmailModal({ isOpen, onClose }) {
   const [cooldownRemaining, setCooldownRemaining] = useState(0);
   const [showCooldownMessage, setShowCooldownMessage] = useState(false);
   const [isStatusFading, setIsStatusFading] = useState(false);
+  const [statusCycle, setStatusCycle] = useState(0);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
 
@@ -145,7 +146,7 @@ function handleNameChange(e) {
       window.clearTimeout(fadeTimeout);
       window.clearTimeout(clearTimeoutId);
     };
-  }, [statusText]);
+  }, [statusText, statusCycle]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -255,6 +256,8 @@ async function handleSubmit(event) {
   if (currentCooldown > 0) {
     setCooldownRemaining(currentCooldown);
     setShowCooldownMessage(true);
+    setIsStatusFading(false);
+    setStatusCycle((current) => current + 1);
     setStatusText(`Please wait ${formatCooldown(currentCooldown)} before sending another message.`);
     setStatusType("error");
     return;
