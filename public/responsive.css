@@ -798,17 +798,19 @@ body:not(.dark-mode) .send-btn.active:hover{
   background: #ffffff;
   border: 1px solid #e5e5e5;
   box-sizing: border-box;
-  padding: 22px 22px;
+  padding: 14px 16px;
   margin-left: 40px;
   min-height: 130px;
 }
 
-.social-links-container h2{
+.side-card-title{
   margin: 0 0 25px;
+  padding: 0;
   font-size: var(--font-size-card-title);
   font-weight: var(--font-weight-semibold);
   color: #111;
   line-height: 1.2;
+  text-align: left;
 }
 
 .social-links-list{
@@ -1599,20 +1601,17 @@ body.modal-open{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .tagline-label {
-  margin: 0 0 25px;
-  font-size: var(--font-size-card-title);
-  font-weight: var(--font-weight-semibold);
-  color: #111;
   letter-spacing: 0;
   text-transform: none;
-  text-align: left;
+  align-self: flex-start;
 }
 
 .tagline-text {
-  margin: 0 0 16px;
+  margin: 8px 0 16px;
   font-size: var(--font-size-meta);
   font-style: italic;
   color: #444;
@@ -1627,7 +1626,7 @@ body.modal-open{
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .tagline-dot {
@@ -2152,9 +2151,9 @@ body.modal-open{
   min-height: auto;
 }
 
-.social-links-container h2{
-  font-size: 18px;
-}
+  .side-card-title{
+    font-size: 18px;
+  }
 
 .social-link-item{
     grid-template-columns: 26px 1fr;
@@ -2371,9 +2370,9 @@ body.modal-open{
   min-height: auto;
 }
 
-.social-links-container h2{
-  font-size: 18px;
-}
+  .side-card-title{
+    font-size: 18px;
+  }
 
 .social-link-item{
     grid-template-columns: 24px 1fr;

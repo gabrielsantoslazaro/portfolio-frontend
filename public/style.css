@@ -876,12 +876,14 @@ body:not(.dark-mode) .send-btn.active:hover{
   min-height: 130px;
 }
 
-.social-links-container h2{
+.side-card-title{
   margin: 0 0 25px;
+  padding: 0;
   font-size: var(--font-size-card-title);
   font-weight: var(--font-weight-semibold);
   color: #111;
   line-height: 1.2;
+  text-align: left;
 }
 
 .social-links-list{
@@ -1761,20 +1763,17 @@ body.modal-open{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .tagline-label {
-  margin: 0 0 25px;
-  font-size: var(--font-size-card-title);
-  font-weight: var(--font-weight-semibold);
-  color: #111;
   letter-spacing: 0;
   text-transform: none;
-  text-align: left;
+  align-self: flex-start;
 }
 
 .tagline-text {
-  margin: 0 0 16px;
+  margin: 8px 0 16px;
   font-size: var(--font-size-meta);
   font-style: italic;
   color: #444;
@@ -1789,7 +1788,7 @@ body.modal-open{
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .tagline-dot {

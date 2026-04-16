@@ -899,7 +899,7 @@ export default function HomePage({ theme, certificatePreview, onOpenCertificate,
             </div>
 
             <div className="social-links-container">
-              <h2>Social Links</h2>
+              <h2 className="side-card-title">Social Links</h2>
                 <div className="social-links-list">
                   {SOCIAL_LINKS.map((item) => (
                     <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="social-link-item">
@@ -912,7 +912,7 @@ export default function HomePage({ theme, certificatePreview, onOpenCertificate,
 
             <div className="motto-container">
               <div className="tagline-section">
-                <p className="tagline-label">Motto</p>
+                <h2 className="side-card-title tagline-label">Motto</h2>
                 <p className="tagline-text" id="taglineText">{TAGLINES[currentTagline]}</p>
                 <div className="tagline-dots" id="taglineDots">
                   {TAGLINES.map((tagline, index) => (
