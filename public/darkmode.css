@@ -604,11 +604,21 @@ body.dark-mode .project-domain{
 
 .social-link-item,
 .social-link-item:visited,
-.social-link-item:hover,
 .social-link-item:focus,
 .social-link-item:active{
   color: var(--text);
   text-decoration: none;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+.social-link-item:focus-visible{
+  color: var(--text);
+  text-decoration: none;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
 }
 
 /* GALLERY */
@@ -654,8 +664,10 @@ body.dark-mode .social-link-item{
   border-bottom: 1px solid #3a3b3c;
 }
 
-body.dark-mode .social-link-item:hover{
-  background: rgba(255, 255, 255, 0.06);
+@media (hover: hover) and (pointer: fine) {
+  body.dark-mode .social-link-item:hover{
+    background: rgba(255, 255, 255, 0.06);
+  }
 }
 
 body.dark-mode .gallery-img{
@@ -878,15 +890,19 @@ body.dark-mode .motto-container .tagline-text{
 }
 
 body.dark-mode .motto-container .tagline-dot{
+  background: transparent;
+}
+
+body.dark-mode .motto-container .tagline-dot::before{
   background: #4e4f50;
 }
 
-body.dark-mode .motto-container .tagline-dot.active{
+body.dark-mode .motto-container .tagline-dot.active::before{
   background: #e4e6eb;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  body.dark-mode .motto-container .tagline-dot:hover{
+  body.dark-mode .motto-container .tagline-dot:not(.active):hover::before{
     background: #6f7275;
   }
 }

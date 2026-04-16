@@ -892,24 +892,31 @@ body:not(.dark-mode) .send-btn.active:hover{
 }
 
 .social-link-item{
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    align-items: center;
   gap: 8px;
   text-decoration: none;
   color: #111;
-  min-height: 30px;
-  padding: 2px 4px;
-  border-bottom: 1px solid #f0f0f0;
-  border-radius: 8px;
-}
+    min-height: 30px;
+    padding: 2px 4px;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 8px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
 
 .social-links-list .social-link-item:last-child{
   border-bottom: none;
 }
 
-.social-link-item:hover{
-  background: #f6f6f6;
+@media (hover: hover) and (pointer: fine) {
+  .social-link-item:hover{
+    background: #f6f6f6;
+  }
 }
 
 .social-link-item img{
@@ -932,12 +939,20 @@ body:not(.dark-mode) .send-btn.active:hover{
 
 .social-link-item,
 .social-link-item:visited,
-.social-link-item:hover,
 .social-link-item:focus,
 .social-link-item:active{
-  text-decoration: none;
-  color: #111;
-}
+    text-decoration: none;
+    color: #111;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+  }
+
+.social-link-item:focus-visible{
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+  }
 
 .gallery-container{
   width: min(910px, 100%);
@@ -1792,15 +1807,15 @@ body.modal-open{
 }
 
 .tagline-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
+  position: relative;
+  width: 16px;
+  height: 16px;
   border: none;
   outline: none;
-  background: #d9d9d9;
+  background: transparent;
   cursor: pointer;
   padding: 0;
-  transition: background 0.2s ease;
+  transition: none;
   box-shadow: none;
   appearance: none;
   -webkit-appearance: none;
@@ -1808,7 +1823,27 @@ body.modal-open{
   touch-action: manipulation;
 }
 
-.tagline-dot.active {
+.tagline-dot,
+.tagline-dot:focus,
+.tagline-dot:active,
+.tagline-dot:focus-visible {
+  background: transparent;
+}
+
+.tagline-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s ease;
+}
+
+.tagline-dot.active::before {
   background: #111;
 }
 
@@ -1824,7 +1859,7 @@ body.modal-open{
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .tagline-dot:hover {
+  .tagline-dot:not(.active):hover::before {
     background: #888;
   }
 }

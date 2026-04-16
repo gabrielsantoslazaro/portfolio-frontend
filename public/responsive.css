@@ -835,9 +835,11 @@ body:not(.dark-mode) .send-btn.active:hover{
   border-bottom: none;
 }
 
-.social-link-item:hover{
-    background: #f6f6f6;
-  }
+ @media (hover: hover) and (pointer: fine) {
+   .social-link-item:hover{
+     background: #f6f6f6;
+   }
+ }
 
 .social-link-item img{
     width: 16px;
