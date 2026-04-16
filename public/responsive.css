@@ -819,27 +819,23 @@ body:not(.dark-mode) .send-btn.active:hover{
 }
 
 .social-link-item{
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: #111;
-    padding: 2px 4px;
-    border-bottom: 1px solid #f0f0f0;
-    border-radius: 8px;
-    min-height: 30px;
-  }
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #111;
+      width: 100%;
+      padding: 2px 4px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #f0f0f0;
+        border-radius: 0;
+      min-height: 30px;
+    }
 
 .social-links-list .social-link-item:last-child{
   border-bottom: none;
 }
-
- @media (hover: hover) and (pointer: fine) {
-   .social-link-item:hover{
-     background: #f6f6f6;
-   }
- }
 
 .social-link-item img{
     width: 16px;

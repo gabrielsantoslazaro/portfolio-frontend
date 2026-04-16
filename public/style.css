@@ -895,13 +895,15 @@ body:not(.dark-mode) .send-btn.active:hover{
     display: grid;
     grid-template-columns: 28px 1fr;
     align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #111;
+    gap: 8px;
+    text-decoration: none;
+    color: #111;
+    width: 100%;
     min-height: 30px;
     padding: 2px 4px;
+    box-sizing: border-box;
     border-bottom: 1px solid #f0f0f0;
-    border-radius: 8px;
+    border-radius: 0;
     background: transparent;
     outline: none;
     box-shadow: none;
@@ -911,12 +913,6 @@ body:not(.dark-mode) .send-btn.active:hover{
 
 .social-links-list .social-link-item:last-child{
   border-bottom: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .social-link-item:hover{
-    background: #f6f6f6;
-  }
 }
 
 .social-link-item img{
@@ -953,6 +949,14 @@ body:not(.dark-mode) .send-btn.active:hover{
     box-shadow: none;
     background: transparent;
   }
+
+@media (hover: hover) and (pointer: fine) {
+  .social-link-item:hover,
+  .social-link-item:hover:focus,
+  .social-link-item:hover:focus-visible{
+    background: #f6f6f6;
+  }
+}
 
 .gallery-container{
   width: min(910px, 100%);

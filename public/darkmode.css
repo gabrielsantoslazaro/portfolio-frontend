@@ -665,7 +665,9 @@ body.dark-mode .social-link-item{
 }
 
 @media (hover: hover) and (pointer: fine) {
-  body.dark-mode .social-link-item:hover{
+  body.dark-mode .social-link-item:hover,
+  body.dark-mode .social-link-item:hover:focus,
+  body.dark-mode .social-link-item:hover:focus-visible{
     background: rgba(255, 255, 255, 0.06);
   }
 }
