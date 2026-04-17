@@ -251,16 +251,31 @@ app.post("/contact", async (req, res) => {
 
     if (!response.ok) {
       const errorText = await response.text().catch(() => "");
+      let formspreeMessage = "";
+
+      try {
+        const parsed = JSON.parse(errorText);
+        if (Array.isArray(parsed?.errors) && parsed.errors.length > 0) {
+          formspreeMessage = parsed.errors
+            .map((entry) => entry?.message || entry?.field || "")
+            .filter(Boolean)
+            .join(" ");
+        } else if (typeof parsed?.error === "string") {
+          formspreeMessage = parsed.error;
+        } else if (typeof parsed?.message === "string") {
+          formspreeMessage = parsed.message;
+        }
+      } catch (error) {
+        formspreeMessage = errorText.trim();
+      }
+
       console.error("[contact] Formspree error", {
         status: response.status,
         body: errorText
       });
       return res.status(502).json({
         message: "Failed to send message. Please try again.",
-        debug:
-          response.status === 422
-            ? "Formspree rejected the submission. Check the form endpoint and captcha configuration."
-            : `Formspree returned status ${response.status}.`
+        debug: formspreeMessage || `Formspree returned status ${response.status}.`
       });
     }
 
