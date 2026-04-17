@@ -171,20 +171,24 @@ app.post("/contact", async (req, res) => {
     const trimmedSubject = String(subject || "").trim();
     const trimmedMessage = String(message || "").trim();
     const trimmedCaptchaResponse = String(captchaResponse || "").trim();
+    const ipAddress = getClientIpAddress(req);
+
+    console.log("[contact] request received", {
+      ipAddress,
+      hasName: Boolean(trimmedName),
+      hasEmail: Boolean(trimmedEmail),
+      hasSubject: Boolean(trimmedSubject),
+      hasMessage: Boolean(trimmedMessage),
+      hasCaptcha: Boolean(trimmedCaptchaResponse),
+      messageLength: trimmedMessage.length
+    });
 
     if (!trimmedName || !trimmedEmail || !trimmedSubject || !trimmedMessage || !trimmedCaptchaResponse) {
       return res.status(400).json({ message: "Please complete all required fields." });
     }
 
     const now = Date.now();
-    const ipAddress = getClientIpAddress(req);
     const currentSubmissions = pruneOldContactSubmissions(contactSubmissionLog.get(ipAddress) || [], now);
-
-    if (currentSubmissions.length >= CONTACT_SUBMISSION_LIMIT) {
-      return res.status(429).json({
-        message: "You've reached the daily message limit for this IP address. Please try again after 24 hours."
-      });
-    }
 
     const formBody = new FormData();
     formBody.append("name", trimmedName);
@@ -204,17 +208,32 @@ app.post("/contact", async (req, res) => {
 
     if (!response.ok) {
       const errorText = await response.text().catch(() => "");
-      console.error("Formspree error:", response.status, errorText);
-      return res.status(502).json({ message: "Failed to send message. Please try again." });
+      console.error("[contact] Formspree error", {
+        status: response.status,
+        body: errorText
+      });
+      return res.status(502).json({
+        message: "Failed to send message. Please try again.",
+        debug:
+          response.status === 422
+            ? "Formspree rejected the submission. Check the form endpoint and captcha configuration."
+            : `Formspree returned status ${response.status}.`
+      });
     }
 
-    currentSubmissions.push(now);
-    contactSubmissionLog.set(ipAddress, currentSubmissions);
+    console.log("[contact] message sent successfully", {
+      ipAddress,
+      submissionsToday: currentSubmissions.length,
+      ipLimitEnabled: false
+    });
 
     return res.status(200).json({ message: "Message sent successfully." });
   } catch (error) {
-    console.error("Contact form error:", error);
-    return res.status(500).json({ message: "Network error. Please try again." });
+    console.error("[contact] Contact form error:", error);
+    return res.status(500).json({
+      message: "Network error. Please try again.",
+      debug: error instanceof Error ? error.message : "Unknown server error."
+    });
   }
 });
 

@@ -316,7 +316,8 @@ async function handleSubmit(event) {
           handleClose();
         }, 1400);
       } else {
-        setStatusText(data.message || "Failed to send message. Please try again.");
+        const failureMessage = [data.message, data.debug].filter(Boolean).join(" ");
+        setStatusText(failureMessage || "Failed to send message. Please try again.");
         setStatusType("error");
       }
     } catch (error) {
