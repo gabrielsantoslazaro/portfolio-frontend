@@ -226,7 +226,7 @@ app.post("/contact", async (req, res) => {
 
     if (currentSubmissions.length >= CONTACT_SUBMISSION_LIMIT) {
       return res.status(429).json({
-        message: "You've reached the daily message limit for this IP address. Please try again after 24 hours."
+        message: "You've reached the daily message limit."
       });
     }
 
