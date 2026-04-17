@@ -232,19 +232,21 @@ app.post("/contact", async (req, res) => {
       });
     }
 
-    const formBody = new FormData();
-    formBody.append("name", trimmedName);
-    formBody.append("email", trimmedEmail);
-    formBody.append("_replyto", trimmedEmail);
-    formBody.append("subject", trimmedSubject);
-    formBody.append("message", trimmedMessage);
+    const formBody = new URLSearchParams({
+      name: trimmedName,
+      email: trimmedEmail,
+      _replyto: trimmedEmail,
+      subject: trimmedSubject,
+      message: trimmedMessage
+    });
 
     const response = await fetch(FORMSPREE_ENDPOINT, {
       method: "POST",
       headers: {
-        Accept: "application/json"
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: formBody
+      body: formBody.toString()
     });
 
     if (!response.ok) {
