@@ -1,7 +1,11 @@
 node_modules/
 dist/
+.next/
+out/
+.vercel
 backend/node_modules/
 backend/.env
 backend-sync-temp/
 backend-publish-temp/
 repo-sync/
+.env*.local

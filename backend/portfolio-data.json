@@ -1,7 +1,7 @@
 {
   "profile": {
     "name": "Gabriel Lazaro",
-    "title": "Aspiring Software / AI Engineer",
+    "title": "Software Developer",
     "location": "Metro Manila, Philippines",
     "education": "Bachelor of Science in Information Technology student at PHINMA Saint Jude College - Manila",
     "about": [
@@ -12,10 +12,11 @@
     ]
   },
   "skills": {
-    "frontend": ["HTML", "CSS", "JavaScript", "React", "Vite"],
-    "backend": ["Node.js", "Express.js"],
-    "programming_languages": ["JavaScript", "Python"],
-    "ai_tools": ["Google GenAI", "OpenAI", "Codex"]
+    "frontend": ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Vite", "Tailwind CSS"],
+    "backend": ["Node.js", "Express.js", "NestJS", "PostgreSQL", "Supabase", "Firebase", "MySQL"],
+    "mobile": ["Flutter", "Dart"],
+    "programming_languages": ["JavaScript", "TypeScript", "Python", "Dart", "Java", "C#", "C++", "PHP", "SQL"],
+    "ai_tools": ["PyTorch", "Hugging Face", "Google GenAI", "OpenAI API", "Prompt Engineering", "LLM Pipelines"]
   },
   "projects": [
     {
