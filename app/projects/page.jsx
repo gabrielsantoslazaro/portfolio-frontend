@@ -73,7 +73,7 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        {/* Minimalist Projects List / Table (Exact Bryl Lim Format) */}
+        {/* Minimalist Projects List / Table */}
         <div className="project-list-table">
           {ALL_PROJECTS.map((item) => (
             <a

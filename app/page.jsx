@@ -222,35 +222,35 @@ export default function HomePage() {
 
   return (
     <>
-      <main className="bryl-main-container">
+      <main className="lz-main-container">
         {/* 1. Hero Section */}
-        <section className="bryl-hero">
-          <div className="bryl-hero-photo-wrap">
+        <section className="lz-hero">
+          <div className="lz-hero-photo-wrap">
             <img
               src={isDark ? "/Images/dark.png" : "/Images/light.png"}
               alt="Gabriel Lazaro"
-              className="bryl-hero-photo"
+              className="lz-hero-photo"
               fetchPriority="high"
             />
           </div>
 
-          <div className="bryl-hero-info">
-            <h1 className="bryl-hero-name">Gabriel Lazaro</h1>
-            <p className="bryl-hero-bio">
+          <div className="lz-hero-info">
+            <h1 className="lz-hero-name">Gabriel Lazaro</h1>
+            <p className="lz-hero-bio">
               I'm a Software Developer building clean web applications, interactive user interfaces, and scalable full-stack systems.
             </p>
-            <p className="bryl-hero-bio">
+            <p className="lz-hero-bio">
               Right now, I'm developing practical software projects, exploring end-to-end full-stack systems, and building tools to solve real-world problems.
             </p>
 
-            <div className="bryl-social-links">
+            <div className="lz-social-links">
               {SOCIAL_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bryl-social-link"
+                  className="lz-social-link"
                 >
                   {link.label.toLowerCase()} ↗
                 </a>
@@ -260,45 +260,45 @@ export default function HomePage() {
         </section>
 
         {/* 2. Highlights & Credentials Bar */}
-        <section className="bryl-metrics-bar">
-          <div className="bryl-metrics-top">
-            <div className="bryl-metric-top-item">
-              <DynamicIcon name="GraduationCap" className="bryl-metric-icon" />
-              <div className="bryl-metric-top-text">
+        <section className="lz-metrics-bar">
+          <div className="lz-metrics-top">
+            <div className="lz-metric-top-item">
+              <DynamicIcon name="GraduationCap" className="lz-metric-icon" />
+              <div className="lz-metric-top-text">
                 <h4>PHINMA Saint Jude</h4>
                 <span>BS Information Technology</span>
               </div>
             </div>
 
-            <div className="bryl-metric-top-item">
-              <DynamicIcon name="Code2" className="bryl-metric-icon" />
-              <div className="bryl-metric-top-text">
+            <div className="lz-metric-top-item">
+              <DynamicIcon name="Code2" className="lz-metric-icon" />
+              <div className="lz-metric-top-text">
                 <h4>Software Developer</h4>
                 <span>Full-Stack & Systems</span>
               </div>
             </div>
 
-            <div className="bryl-metric-top-item">
-              <DynamicIcon name="Bot" className="bryl-metric-icon" />
-              <div className="bryl-metric-top-text">
+            <div className="lz-metric-top-item">
+              <DynamicIcon name="Bot" className="lz-metric-icon" />
+              <div className="lz-metric-top-text">
                 <h4>AI Integrations</h4>
                 <span>GenAI & Web Apps</span>
               </div>
             </div>
           </div>
 
-          <div className="bryl-metrics-bottom">
-            <div className="bryl-metric-bottom-item">
+          <div className="lz-metrics-bottom">
+            <div className="lz-metric-bottom-item">
               <h3>12+ ↗</h3>
               <span>CERTIFICATIONS</span>
             </div>
 
-            <div className="bryl-metric-bottom-item">
+            <div className="lz-metric-bottom-item">
               <h3>6+ ↗</h3>
               <span>PROJECTS SHIPPED</span>
             </div>
 
-            <div className="bryl-metric-bottom-item">
+            <div className="lz-metric-bottom-item">
               <h3>100% ↗</h3>
               <span>COMMITTED TO CODE</span>
             </div>
@@ -307,15 +307,15 @@ export default function HomePage() {
 
         {/* 3. Section 01 — Projects */}
         <section>
-          <div className="bryl-section-header">
-            <span className="bryl-section-title">01 — projects</span>
-            <Link href="/projects" className="bryl-section-link">
+          <div className="lz-section-header">
+            <span className="lz-section-title">01 — projects</span>
+            <Link href="/projects" className="lz-section-link">
               ALL PROJECTS ↗
             </Link>
           </div>
 
           <div
-            className="bryl-deck-container"
+            className="lz-deck-container"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
@@ -335,7 +335,7 @@ export default function HomePage() {
               return (
                 <div
                   key={proj.title}
-                  className={`bryl-deck-card ${slotClass}`}
+                  className={`lz-deck-card ${slotClass}`}
                   onClick={() => {
                     if (!isCenter) {
                       handleSwapToCenter(slotPosition);
@@ -344,7 +344,7 @@ export default function HomePage() {
                 >
                   <div>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px", marginBottom: "8px" }}>
-                      <span className="bryl-project-pill">
+                      <span className="lz-project-pill">
                         {proj.badge || proj.category}
                       </span>
                       {isCenter && (
@@ -378,7 +378,7 @@ export default function HomePage() {
                       href={proj.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bryl-project-domain"
+                      className="lz-project-domain"
                       style={{ textDecoration: "none", fontWeight: "600", fontSize: "12px", display: "inline-flex", alignItems: "center", gap: "4px" }}
                       onClick={(e) => e.stopPropagation()}
                     >
@@ -400,47 +400,47 @@ export default function HomePage() {
 
         {/* 4. Section 02 — Experience */}
         <section>
-          <div className="bryl-section-header">
-            <span className="bryl-section-title">02 — experience</span>
-            <Link href="/experience" className="bryl-section-link">
+          <div className="lz-section-header">
+            <span className="lz-section-title">02 — experience</span>
+            <Link href="/experience" className="lz-section-link">
               FULL HISTORY ↗
             </Link>
           </div>
 
-          <div className="bryl-experience-table">
+          <div className="lz-experience-table">
             {FULL_EXPERIENCES.map((exp, idx) => (
               <div
                 key={idx}
-                className="bryl-exp-row"
+                className="lz-exp-row"
               >
-                <div className="bryl-exp-main">
-                  <span className="bryl-exp-year">{exp.year || "2024"}</span>
-                  <span className="bryl-exp-role">{exp.role}</span>
+                <div className="lz-exp-main">
+                  <span className="lz-exp-year">{exp.year || "2024"}</span>
+                  <span className="lz-exp-role">{exp.role}</span>
                 </div>
-                <span className="bryl-exp-company">{exp.company}</span>
+                <span className="lz-exp-company">{exp.company}</span>
               </div>
             ))}
           </div>
 
           {/* STACK Bar */}
-          <div className="bryl-stack-container">
-            <div className="bryl-section-header" style={{ marginBottom: "12px" }}>
-              <span className="bryl-section-title">STACK</span>
-              <Link href="/tech-stack" className="bryl-section-link">
+          <div className="lz-stack-container">
+            <div className="lz-section-header" style={{ marginBottom: "12px" }}>
+              <span className="lz-section-title">STACK</span>
+              <Link href="/tech-stack" className="lz-section-link">
                 VIEW ALL ↗
               </Link>
             </div>
 
-            <div className="bryl-stack-pills">
+            <div className="lz-stack-pills">
               {allFlatSkills.map((skill) => (
                 <span
                   key={skill}
-                  className="bryl-stack-pill"
+                  className="lz-stack-pill"
                 >
                   {skill}
                 </span>
               ))}
-              <Link href="/tech-stack" className="bryl-stack-more">
+              <Link href="/tech-stack" className="lz-stack-more">
                 + more
               </Link>
             </div>
@@ -449,26 +449,26 @@ export default function HomePage() {
 
         {/* 5. Section 03 — Certifications */}
         <section>
-          <div className="bryl-section-header">
-            <span className="bryl-section-title">03 — certifications</span>
-            <Link href="/certifications" className="bryl-section-link">
+          <div className="lz-section-header">
+            <span className="lz-section-title">03 — certifications</span>
+            <Link href="/certifications" className="lz-section-link">
               ALL CERTIFICATIONS ↗
             </Link>
           </div>
 
-          <div className="bryl-certs-grid">
+          <div className="lz-certs-grid">
             {HOME_CERTIFICATIONS.slice(0, 3).map((cert, idx) => (
               <div
                 key={cert.title}
-                className="bryl-cert-card"
+                className="lz-cert-card"
                 onClick={() => setCertificatePreview(cert.image)}
               >
-                <div className="bryl-cert-icon">
+                <div className="lz-cert-icon">
                   <IssuerBrandLogo issuer={cert.issuer} iconName={idx === 0 ? "Sparkles" : idx === 1 ? "Award" : "FileCode"} />
                 </div>
-                <h4 className="bryl-cert-title">{cert.title}</h4>
-                <span className="bryl-cert-issuer">{cert.issuer}</span>
-                <span className="bryl-cert-verify">⟨ PREVIEW ⟩</span>
+                <h4 className="lz-cert-title">{cert.title}</h4>
+                <span className="lz-cert-issuer">{cert.issuer}</span>
+                <span className="lz-cert-verify">⟨ PREVIEW ⟩</span>
               </div>
             ))}
           </div>
@@ -476,25 +476,25 @@ export default function HomePage() {
 
         {/* 6. Section 04 — GitHub & Connect */}
         <section>
-          <div className="bryl-section-header">
-            <span className="bryl-section-title">04 — github</span>
+          <div className="lz-section-header">
+            <span className="lz-section-title">04 — github</span>
             <a
               href="https://github.com/gabrielsantoslazaro"
               target="_blank"
               rel="noopener noreferrer"
-              className="bryl-section-link"
+              className="lz-section-link"
             >
               @GABRIELSANTOSLAZARO ↗
             </a>
           </div>
 
-          <div className="bryl-github-banner">
+          <div className="lz-github-banner">
             <GitHubContributions username="gabrielsantoslazaro" theme={theme} />
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="bryl-main-footer">
+        <footer className="lz-main-footer">
           <p>&copy; 2026 Gabriel Lazaro. All Rights Reserved.</p>
         </footer>
       </main>

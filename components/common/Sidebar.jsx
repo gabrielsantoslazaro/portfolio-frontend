@@ -103,7 +103,7 @@ export default function Sidebar() {
     let currentHoveredTarget = null;
     const handleMouseOver = (e) => {
       const target = e.target.closest(
-        "a, button, .cert-clean-card, .bryl-project-card, .bryl-exp-row, .bryl-stack-more, .bryl-metric-top-item, .bryl-metric-bottom-item, .project-list-row, .timeline-item, .sidebar-pill-btn, .sidebar-sound-btn, .sidebar-link, .sidebar-action-btn, .typing-action-shortcut, .typing-close-btn, .ask-suggestion-chip, .ask-action-btn, .ask-close-btn"
+        "a, button, .cert-clean-card, .lz-project-card, .lz-exp-row, .lz-stack-more, .lz-metric-top-item, .lz-metric-bottom-item, .project-list-row, .timeline-item, .sidebar-pill-btn, .sidebar-sound-btn, .sidebar-link, .sidebar-action-btn, .typing-action-shortcut, .typing-close-btn, .ask-suggestion-chip, .ask-action-btn, .ask-close-btn"
       );
 
       if (!target) {

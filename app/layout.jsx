@@ -6,30 +6,51 @@ import AskAnythingModal from "@/components/chatbot/AskAnythingModal";
 import EmailModal from "@/components/contact/EmailModal";
 
 export const metadata = {
-  title: "Gabriel Lazaro — Software Developer",
+  title: {
+    default: "Gabriel Lazaro — Software Developer",
+    template: "%s — Gabriel Lazaro",
+  },
   description:
     "I'm Gabriel Lazaro — a software developer in Metro Manila. I build modern web apps, mobile apps, and full-stack systems. Explore projects, certifications, tech stack, and contact information.",
-  authors: [{ name: "Gabriel Lazaro" }],
+  authors: [{ name: "Gabriel Lazaro", url: "https://gabriellazaro.site" }],
+  creator: "Gabriel Lazaro",
+  publisher: "Gabriel Lazaro",
   keywords: [
     "Gabriel Lazaro",
-    "Bryl Lim style portfolio",
+    "Gabriel Santos Lazaro",
     "Software Developer",
     "Full-Stack Developer",
-    "Web Developer",
-    "React",
-    "Next.js",
+    "Frontend Developer",
+    "Backend Developer",
+    "Web Developer Philippines",
+    "React Developer",
+    "Next.js Developer",
     "Tailwind CSS",
-    "Metro Manila",
+    "Metro Manila Developer",
     "Philippines"
   ],
   metadataBase: new URL("https://gabriellazaro.site"),
   alternates: {
     canonical: "https://gabriellazaro.site",
   },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
+    locale: "en_US",
     url: "https://gabriellazaro.site",
-    siteName: "Gabriel Lazaro",
+    siteName: "Gabriel Lazaro Portfolio",
     title: "Gabriel Lazaro — Software Developer",
     description:
       "I'm Gabriel Lazaro — a software developer in Metro Manila. I build modern web apps, mobile apps, and full-stack systems.",
@@ -38,7 +59,7 @@ export const metadata = {
         url: "/Images/dark.png",
         width: 1200,
         height: 630,
-        alt: "Gabriel Lazaro — Software Developer",
+        alt: "Gabriel Lazaro — Software Developer Portfolio",
       },
     ],
   },
@@ -48,6 +69,7 @@ export const metadata = {
     description:
       "I'm Gabriel Lazaro — a software developer in Metro Manila. I build modern web apps, mobile apps, and full-stack systems.",
     images: ["/Images/dark.png"],
+    creator: "@gabriellazaro",
   },
   icons: {
     icon: [
@@ -66,7 +88,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://gabriellazaro.site/#website",
       "url": "https://gabriellazaro.site",
-      "name": "Gabriel Lazaro",
+      "name": "Gabriel Lazaro — Software Developer Portfolio",
       "alternateName": [
         "Gabriel Santos Lazaro",
         "Gabriel Lazaro Portfolio",
@@ -74,16 +96,51 @@ const jsonLd = {
       ],
       "publisher": {
         "@id": "https://gabriellazaro.site/#person"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://gabriellazaro.site/#profilepage",
+      "url": "https://gabriellazaro.site",
+      "name": "Gabriel Lazaro — Software Developer",
+      "isPartOf": {
+        "@id": "https://gabriellazaro.site/#website"
+      },
+      "mainEntity": {
+        "@id": "https://gabriellazaro.site/#person"
       }
     },
     {
       "@type": "Person",
       "@id": "https://gabriellazaro.site/#person",
       "name": "Gabriel Lazaro",
+      "alternateName": "Gabriel Santos Lazaro",
       "url": "https://gabriellazaro.site",
       "jobTitle": "Software Developer",
       "image": "https://gabriellazaro.site/Images/dark.png",
       "description": "Software Developer and AI Integrator based in Metro Manila, Philippines.",
+      "knowsAbout": [
+        "Software Engineering",
+        "Web Development",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Express",
+        "JavaScript",
+        "TypeScript",
+        "Tailwind CSS",
+        "MongoDB",
+        "PostgreSQL",
+        "REST APIs",
+        "AI Integration",
+        "Full-Stack Development"
+      ],
+      "knowsLanguage": ["en", "tl"],
+      "nationality": {
+        "@type": "Country",
+        "name": "Philippines"
+      },
       "sameAs": [
         "https://github.com/gabrielsantoslazaro",
         "https://www.linkedin.com/in/gabrielsantoslazaro"
@@ -120,8 +177,8 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {/* Subtle retro dot pattern background (Edge gutters only, never overlapping content) */}
-        <div className="bryl-bg-dots-top" aria-hidden="true" />
-        <div className="bryl-bg-dots-bottom" aria-hidden="true" />
+        <div className="lz-bg-dots-top" aria-hidden="true" />
+        <div className="lz-bg-dots-bottom" aria-hidden="true" />
         <Sidebar />
         <TypingTestModal />
         <AskAnythingModal />
