@@ -288,15 +288,15 @@ export default function HomePage() {
           </div>
 
           <div className="lz-metrics-bottom">
-            <div className="lz-metric-bottom-item">
+            <Link href="/certifications" className="lz-metric-bottom-item lz-metric-bottom-link">
               <h3>12+ ↗</h3>
               <span>CERTIFICATIONS</span>
-            </div>
+            </Link>
 
-            <div className="lz-metric-bottom-item">
+            <Link href="/projects" className="lz-metric-bottom-item lz-metric-bottom-link">
               <h3>6+ ↗</h3>
               <span>PROJECTS SHIPPED</span>
-            </div>
+            </Link>
 
             <div className="lz-metric-bottom-item">
               <h3>100% ↗</h3>

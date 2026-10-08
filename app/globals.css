@@ -1244,6 +1244,20 @@ body.dark-mode .lz-metrics-bottom {
   box-sizing: border-box;
 }
 
+.lz-metric-bottom-link {
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.lz-metric-bottom-link:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+body.dark-mode .lz-metric-bottom-link:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
 .lz-metric-bottom-item:last-child {
   border-right: none !important;
 }
