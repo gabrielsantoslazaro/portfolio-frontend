@@ -73,13 +73,13 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/Images/favicon.png", type: "image/png", sizes: "192x192" },
-      { url: "/favicon.ico", sizes: "any" }
+      { url: "/Images/favicon.png?v=3", type: "image/png", sizes: "192x192" },
+      { url: "/favicon.ico?v=3", sizes: "any" }
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+      { url: "/apple-touch-icon.png?v=3", sizes: "180x180", type: "image/png" }
     ],
-    shortcut: "/favicon.ico",
+    shortcut: "/favicon.ico?v=3",
   },
 };
 
@@ -155,9 +155,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/Images/favicon.png" type="image/png" sizes="192x192" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
+        <link rel="icon" href="/Images/favicon.png?v=3" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" sizes="180x180" />
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="stylesheet" href="/css/responsive.css" />
         <link rel="stylesheet" href="/css/darkmode.css" />
