@@ -73,10 +73,12 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/Images/favicon.png", type: "image/png" },
-      { url: "/favicon.ico" }
+      { url: "/Images/favicon.png", type: "image/png", sizes: "192x192" },
+      { url: "/favicon.ico", sizes: "any" }
     ],
-    apple: "/Images/favicon.png",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
     shortcut: "/favicon.ico",
   },
 };
@@ -154,8 +156,8 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/Images/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/Images/favicon.png" />
+        <link rel="icon" href="/Images/favicon.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="stylesheet" href="/css/style.css" />
         <link rel="stylesheet" href="/css/responsive.css" />
         <link rel="stylesheet" href="/css/darkmode.css" />

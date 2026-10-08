@@ -8,7 +8,10 @@ User-agent: Googlebot
 Allow: /
 
 User-agent: Googlebot-Image
-Allow: /Images/
+Allow: /
+
+User-agent: Googlebot-Favicon
+Allow: /
 
 User-agent: Bingbot
 Allow: /

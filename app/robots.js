@@ -13,6 +13,14 @@ export default function robots() {
         allow: "/",
       },
       {
+        userAgent: "Googlebot-Image",
+        allow: "/",
+      },
+      {
+        userAgent: "Googlebot-Favicon",
+        allow: "/",
+      },
+      {
         userAgent: "Bingbot",
         allow: "/",
       },
