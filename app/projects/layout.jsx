@@ -15,7 +15,7 @@ export const metadata = {
       "Featured products, platforms, and full-stack web applications designed, engineered, and shipped by Gabriel Lazaro.",
     images: [
       {
-        url: "/Images/dark.png",
+        url: "/Images/light.png",
         width: 1200,
         height: 630,
         alt: "Gabriel Lazaro Projects",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "Projects — Gabriel Lazaro",
     description:
       "Featured products, platforms, and full-stack web applications designed, engineered, and shipped by Gabriel Lazaro.",
-    images: ["/Images/dark.png"],
+    images: ["/Images/light.png"],
   },
 };
 

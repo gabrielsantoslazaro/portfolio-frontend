@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import DynamicIcon from "./DynamicIcon";
-import { playHoverSound, playClickSound, playUnmuteSound, playMuteSound } from "@/lib/sound";
+import { playHoverSound, playClickSound, playClickDownSound, playClickUpSound, playUnmuteSound, playMuteSound } from "@/lib/sound";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -99,12 +99,41 @@ export default function Sidebar() {
       }
     };
 
-    // Global cursor hover sound effect for interactive elements (triggers once per element entry)
+    // Global cursor hover & click sound effects for all interactive elements
     let currentHoveredTarget = null;
+    const INTERACTIVE_SELECTOR =
+      "a, button, [role='button'], [role='tab'], [role='link'], [role='switch'], [role='checkbox'], [role='menuitem'], [role='option'], input[type='button'], input[type='submit'], input[type='reset'], summary, [tabindex]:not([tabindex='-1']), select, label, .cert-clean-card, .lz-project-card, .lz-deck-card, .lz-cert-card, .lz-exp-row, .lz-home-blog-row, .blog-list-item, .blog-grid-item, .lz-stack-more, .lz-metric-bottom-link, .lz-section-link, .lz-project-domain, .project-list-row, .timeline-item, .sidebar-pill-btn, .sidebar-sound-btn, .sidebar-link, .sidebar-action-btn, .sidebar-email-btn, .sidebar-schedule-btn, .sidebar-cv-btn, .sidebar-email-link, .sidebar-brand, .mobile-top-brand, .mobile-top-menu-btn, .mobile-drawer-close, .mobile-drawer-brand, .typing-action-shortcut, .typing-close-btn, .typing-try-again-btn, .typing-key, .ask-suggestion-chip, .ask-action-btn, .ask-close-btn, .ask-mini-copy-btn, .ask-pill-action-btn, .certificate-modal-close, .certificate-modal-overlay, .theme-btn, .post-share-btn, .post-footer-top-btn, .blog-toggle-btn, .post-back-link, .blog-modal-backdrop, .blog-modal-back-btn, .blog-modal-action-btn, .blog-modal-close-btn";
+
+    const getInteractiveTarget = (el) => {
+      if (!el || el === document.body || el === document.documentElement) return null;
+      // Do not trigger sounds on static stack pills (only the '+ more' button should trigger)
+      if (el.closest?.(".lz-stack-pill")) return null;
+
+      // Do not trigger sounds on static top metrics or non-link bottom metric (only 12+ Certifications and 6+ Projects links)
+      if (el.closest?.(".lz-metric-top-item")) return null;
+      const bottomMetric = el.closest?.(".lz-metric-bottom-item");
+      if (bottomMetric && !bottomMetric.classList.contains("lz-metric-bottom-link") && bottomMetric.tagName !== "A") {
+        return null;
+      }
+
+      const matched = el.closest?.(INTERACTIVE_SELECTOR);
+      if (matched) return matched;
+
+      try {
+        let curr = el;
+        while (curr && curr !== document.body && curr !== document.documentElement) {
+          if (curr.onclick || (window.getComputedStyle && window.getComputedStyle(curr).cursor === "pointer")) {
+            return curr;
+          }
+          curr = curr.parentElement;
+        }
+      } catch (err) {}
+
+      return null;
+    };
+
     const handleMouseOver = (e) => {
-      const target = e.target.closest(
-        "a, button, .cert-clean-card, .lz-project-card, .lz-exp-row, .lz-stack-more, .lz-metric-top-item, .lz-metric-bottom-item, .project-list-row, .timeline-item, .sidebar-pill-btn, .sidebar-sound-btn, .sidebar-link, .sidebar-action-btn, .typing-action-shortcut, .typing-close-btn, .ask-suggestion-chip, .ask-action-btn, .ask-close-btn"
-      );
+      const target = getInteractiveTarget(e.target);
 
       if (!target) {
         currentHoveredTarget = null;
@@ -119,8 +148,35 @@ export default function Sidebar() {
       playHoverSound();
     };
 
+    // Dual-phase mechanical click: Crisp downstroke on press, delicate high return on release
+    let isPressedOnInteractive = false;
+
+    const handlePointerDown = (e) => {
+      // Primary left click or touch only
+      if (e.button !== undefined && e.button !== 0) return;
+      const target = getInteractiveTarget(e.target);
+      if (target) {
+        isPressedOnInteractive = true;
+        playClickDownSound();
+      }
+    };
+
+    const handlePointerUp = () => {
+      if (isPressedOnInteractive) {
+        isPressedOnInteractive = false;
+        playClickUpSound();
+      }
+    };
+
+    const handlePointerCancel = () => {
+      isPressedOnInteractive = false;
+    };
+
     window.addEventListener("keydown", handleKeyDown);
     document.addEventListener("mouseover", handleMouseOver, { passive: true });
+    document.addEventListener("pointerdown", handlePointerDown, { capture: true, passive: true });
+    document.addEventListener("pointerup", handlePointerUp, { capture: true, passive: true });
+    document.addEventListener("pointercancel", handlePointerCancel, { passive: true });
 
     const handleMediaChange = (e) => {
       const currentMode = localStorage.getItem("theme_mode");
@@ -135,6 +191,9 @@ export default function Sidebar() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("pointerdown", handlePointerDown, { capture: true });
+      document.removeEventListener("pointerup", handlePointerUp, { capture: true });
+      document.removeEventListener("pointercancel", handlePointerCancel);
       mediaQuery.removeEventListener("change", handleMediaChange);
     };
   }, []);
@@ -213,24 +272,29 @@ export default function Sidebar() {
     localStorage.setItem("sound_muted", String(!next));
   };
 
-  const navLinks = [
-    { label: "Projects", href: "/projects", icon: "FolderGit2" },
-    { label: "Experience", href: "/experience", icon: "Milestone" },
-    { label: "Stack", href: "/tech-stack", icon: "Layers" },
-    { label: "Certifications", href: "/certifications", icon: "Award" },
+  const topNavLinks = [
+    { label: "Projects", href: "/projects" },
+    { label: "Experience", href: "/experience" },
+    { label: "Stack", href: "/tech-stack" },
+    { label: "Certifications", href: "/certifications" },
+  ];
+
+  const middleNavLinks = [
+    { label: "Blog", href: "/blog", icon: "BookOpen" },
+    { label: "Gear", href: "/gear", icon: "Monitor" },
   ];
 
   const shortcutActions = [
     {
       id: "chat",
       label: "Ask anything",
-      shortcut: isMac ? "⌥K" : "Alt + K",
+      keys: isMac ? ["⌥", "K"] : ["Alt", "K"],
       action: openChat,
     },
     {
       id: "typing",
       label: "Typing test",
-      shortcut: isMac ? "⌥T" : "Alt + T",
+      keys: isMac ? ["⌥", "T"] : ["Alt", "T"],
       action: openTypingTest,
       desktopOnly: true,
     },
@@ -310,13 +374,35 @@ export default function Sidebar() {
             }}
             className="sidebar-brand"
           >
-            <DynamicIcon name="Terminal" className="w-4 h-4" />
             <span>Gabriel Lazaro</span>
           </Link>
 
-          {/* Navigation Links */}
-          <nav className="sidebar-nav">
-            {navLinks.map((item) => {
+          {/* Top Section Navigation Links (Projects, Experience, Stack, Certifications - NO ICONS) */}
+          <nav className="sidebar-nav sidebar-top-nav">
+            {topNavLinks.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => {
+                    playClickSound();
+                    setIsMobileOpen(false);
+                  }}
+                  className={`sidebar-link${isActive ? " active" : ""}`}
+                >
+                  {isActive && <span className="sidebar-arrow">→</span>}
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
+
+          <hr className="sidebar-divider" />
+
+          {/* Middle Section (Blog & Gear - WITH ICONS) */}
+          <nav className="sidebar-nav sidebar-middle-nav">
+            {middleNavLinks.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
@@ -338,7 +424,7 @@ export default function Sidebar() {
 
           <hr className="sidebar-divider" />
 
-          {/* Action Links (Send Email, Schedule a Call, Download CV) */}
+          {/* Bottom Actions (Send Email, Schedule a Call, Download CV - WITH ICONS) */}
           <div className="sidebar-top-actions">
             {/* Clickable Send Email Button */}
             <button
@@ -372,7 +458,6 @@ export default function Sidebar() {
                 <DynamicIcon name="Calendar" className="w-4 h-4" />
                 <span>Schedule a call</span>
               </div>
-              <span style={{ fontSize: "12px", opacity: 0.7 }}>↗</span>
             </a>
 
             {/* Clickable Download CV Link */}
@@ -408,10 +493,14 @@ export default function Sidebar() {
                   item.action();
                   setIsMobileOpen(false);
                 }}
-                className={`sidebar-action-btn${item.desktopOnly ? " sidebar-desktop-only" : ""}`}
+                className={`sidebar-action-btn sidebar-shortcut-btn${item.desktopOnly ? " sidebar-desktop-only" : ""}`}
               >
                 <span>{item.label}</span>
-                <span className="sidebar-kbd">{item.shortcut}</span>
+                <span className="sidebar-kbd-wrap">
+                  <span className="sidebar-kbd">{item.keys[0]}</span>
+                  <span className="sidebar-kbd-plus">+</span>
+                  <span className="sidebar-kbd">{item.keys[1]}</span>
+                </span>
               </button>
             ))}
           </div>

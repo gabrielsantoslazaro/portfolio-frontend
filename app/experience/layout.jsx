@@ -15,7 +15,7 @@ export const metadata = {
       "Professional work experience, software engineering roles, and technical milestones of Gabriel Lazaro.",
     images: [
       {
-        url: "/Images/dark.png",
+        url: "/Images/light.png",
         width: 1200,
         height: 630,
         alt: "Gabriel Lazaro Experience",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "Experience — Gabriel Lazaro",
     description:
       "Professional work experience, software engineering roles, and technical milestones of Gabriel Lazaro.",
-    images: ["/Images/dark.png"],
+    images: ["/Images/light.png"],
   },
 };
 

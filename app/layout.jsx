@@ -56,7 +56,7 @@ export const metadata = {
       "I'm Gabriel Lazaro — a software developer in Metro Manila. I build modern web apps, mobile apps, and full-stack systems.",
     images: [
       {
-        url: "/Images/dark.png",
+        url: "/Images/light.png",
         width: 1200,
         height: 630,
         alt: "Gabriel Lazaro — Software Developer Portfolio",
@@ -68,7 +68,7 @@ export const metadata = {
     title: "Gabriel Lazaro — Software Developer",
     description:
       "I'm Gabriel Lazaro — a software developer in Metro Manila. I build modern web apps, mobile apps, and full-stack systems.",
-    images: ["/Images/dark.png"],
+    images: ["/Images/light.png"],
     creator: "@gabriellazaro",
   },
   icons: {
@@ -120,7 +120,7 @@ const jsonLd = {
       "alternateName": "Gabriel Santos Lazaro",
       "url": "https://gabriellazaro.site",
       "jobTitle": "Software Developer",
-      "image": "https://gabriellazaro.site/Images/dark.png",
+      "image": "https://gabriellazaro.site/Images/light.png",
       "description": "Software Developer and AI Integrator based in Metro Manila, Philippines.",
       "knowsAbout": [
         "Software Engineering",

@@ -10,6 +10,7 @@ import {
   TECH_STACKS,
   FULL_EXPERIENCES
 } from "@/lib/data";
+import { BLOG_POSTS } from "@/lib/blog-data";
 import DynamicIcon from "@/components/common/DynamicIcon";
 import GitHubContributions from "@/components/common/GitHubContributions";
 import { playClickSound } from "@/lib/sound";
@@ -18,11 +19,16 @@ const EMAIL_COOLDOWN_MS = 10 * 60 * 1000;
 const EMAIL_COOLDOWN_STORAGE_KEY = "email_form_cooldown_until";
 
 function CertificateModal({ imageSrc, onClose }) {
+  const handleClose = () => {
+    playClickSound();
+    onClose();
+  };
+
   useEffect(() => {
     if (!imageSrc) return undefined;
 
     function handleEscape(event) {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") handleClose();
     }
 
     document.addEventListener("keydown", handleEscape);
@@ -31,8 +37,8 @@ function CertificateModal({ imageSrc, onClose }) {
 
   return (
     <div className={`certificate-modal${imageSrc ? " show" : ""}`} id="certificateModal">
-      <div className="certificate-modal-overlay" id="certificateModalOverlay" onClick={onClose}></div>
-      <button className="certificate-modal-close" id="certificateModalClose" aria-label="Close modal" type="button" onClick={onClose}>
+      <div className="certificate-modal-overlay" id="certificateModalOverlay" onClick={handleClose}></div>
+      <button className="certificate-modal-close" id="certificateModalClose" aria-label="Close modal" type="button" onClick={handleClose}>
         &times;
       </button>
       <div className="certificate-modal-content">
@@ -289,26 +295,59 @@ export default function HomePage() {
 
           <div className="lz-metrics-bottom">
             <Link href="/certifications" className="lz-metric-bottom-item lz-metric-bottom-link">
-              <h3>12+ ↗</h3>
-              <span>CERTIFICATIONS</span>
+              <h3>
+                12+ <span className="lz-metric-arrow">↗</span>
+              </h3>
+              <span className="lz-metric-label">CERTIFICATIONS</span>
             </Link>
 
             <Link href="/projects" className="lz-metric-bottom-item lz-metric-bottom-link">
-              <h3>6+ ↗</h3>
-              <span>PROJECTS SHIPPED</span>
+              <h3>
+                6+ <span className="lz-metric-arrow">↗</span>
+              </h3>
+              <span className="lz-metric-label">PROJECTS SHIPPED</span>
             </Link>
 
             <div className="lz-metric-bottom-item">
-              <h3>100% ↗</h3>
-              <span>COMMITTED TO CODE</span>
+              <h3>
+                100% <span className="lz-metric-arrow">↗</span>
+              </h3>
+              <span className="lz-metric-label">COMMITTED TO CODE</span>
             </div>
           </div>
         </section>
 
-        {/* 3. Section 01 — Projects */}
+        {/* 3. Section 01 — Blog */}
         <section>
           <div className="lz-section-header">
-            <span className="lz-section-title">01 — projects</span>
+            <span className="lz-section-title">01 — blog</span>
+            <Link href="/blog" className="lz-section-link">
+              ALL POSTS ↗
+            </Link>
+          </div>
+
+          <div className="lz-home-blog-list">
+            {BLOG_POSTS.slice(0, 3).map((post) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.slug}`}
+                onClick={playClickSound}
+                className="lz-home-blog-row"
+              >
+                <div className="lz-home-blog-header">
+                  <h3 className="lz-home-blog-title">{post.title}</h3>
+                  <span className="lz-home-blog-date">{post.date}</span>
+                </div>
+                <p className="lz-home-blog-excerpt">{post.excerpt}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* 4. Section 02 — Projects */}
+        <section>
+          <div className="lz-section-header">
+            <span className="lz-section-title">02 — projects</span>
             <Link href="/projects" className="lz-section-link">
               ALL PROJECTS ↗
             </Link>
@@ -398,10 +437,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. Section 02 — Experience */}
+        {/* 5. Section 03 — Experience */}
         <section>
           <div className="lz-section-header">
-            <span className="lz-section-title">02 — experience</span>
+            <span className="lz-section-title">03 — experience</span>
             <Link href="/experience" className="lz-section-link">
               FULL HISTORY ↗
             </Link>
@@ -447,10 +486,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. Section 03 — Certifications */}
+        {/* 6. Section 04 — Certifications */}
         <section>
           <div className="lz-section-header">
-            <span className="lz-section-title">03 — certifications</span>
+            <span className="lz-section-title">04 — certifications</span>
             <Link href="/certifications" className="lz-section-link">
               ALL CERTIFICATIONS ↗
             </Link>
@@ -461,7 +500,10 @@ export default function HomePage() {
               <div
                 key={cert.title}
                 className="lz-cert-card"
-                onClick={() => setCertificatePreview(cert.image)}
+                onClick={() => {
+                  playClickSound();
+                  setCertificatePreview(cert.image);
+                }}
               >
                 <div className="lz-cert-icon">
                   <IssuerBrandLogo issuer={cert.issuer} iconName={idx === 0 ? "Sparkles" : idx === 1 ? "Award" : "FileCode"} />
@@ -474,10 +516,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. Section 04 — GitHub & Connect */}
+        {/* 7. Section 05 — GitHub & Connect */}
         <section>
           <div className="lz-section-header">
-            <span className="lz-section-title">04 — github</span>
+            <span className="lz-section-title">05 — github</span>
             <a
               href="https://github.com/gabrielsantoslazaro"
               target="_blank"

@@ -3,13 +3,19 @@
 import { useEffect, useState } from "react";
 import { CATEGORIZED_CERTIFICATIONS } from "@/lib/data";
 import DynamicIcon from "@/components/common/DynamicIcon";
+import { playClickSound } from "@/lib/sound";
 
 function CertificateModal({ imageSrc, onClose }) {
+  const handleClose = () => {
+    playClickSound();
+    onClose();
+  };
+
   useEffect(() => {
     if (!imageSrc) return undefined;
 
     function handleEscape(event) {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") handleClose();
     }
 
     document.addEventListener("keydown", handleEscape);
@@ -18,8 +24,8 @@ function CertificateModal({ imageSrc, onClose }) {
 
   return (
     <div className={`certificate-modal${imageSrc ? " show" : ""}`} id="certificateModal">
-      <div className="certificate-modal-overlay" id="certificateModalOverlay" onClick={onClose}></div>
-      <button className="certificate-modal-close" id="certificateModalClose" aria-label="Close modal" type="button" onClick={onClose}>
+      <div className="certificate-modal-overlay" id="certificateModalOverlay" onClick={handleClose}></div>
+      <button className="certificate-modal-close" id="certificateModalClose" aria-label="Close modal" type="button" onClick={handleClose}>
         &times;
       </button>
       <div className="certificate-modal-content">
@@ -138,6 +144,7 @@ export default function CertificationsPage() {
   }, []);
 
   const handleCertClick = (cert) => {
+    playClickSound();
     if (cert.image) {
       setCertificatePreview(cert.image);
     } else if (cert.href) {

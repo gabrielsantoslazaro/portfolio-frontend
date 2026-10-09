@@ -15,7 +15,7 @@ export const metadata = {
       "Verified industry certifications, badges, and credentials earned by Gabriel Lazaro from Google, AWS, IBM, and Cisco.",
     images: [
       {
-        url: "/Images/dark.png",
+        url: "/Images/light.png",
         width: 1200,
         height: 630,
         alt: "Gabriel Lazaro Certifications",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "Certifications — Gabriel Lazaro",
     description:
       "Verified industry certifications, badges, and credentials earned by Gabriel Lazaro from Google, AWS, IBM, and Cisco.",
-    images: ["/Images/dark.png"],
+    images: ["/Images/light.png"],
   },
 };
 

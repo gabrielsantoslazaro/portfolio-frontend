@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { playKeyClackSound, playTypingErrorSound } from "@/lib/sound";
+import { playClickSound, playKeyClackSound, playTypingErrorSound } from "@/lib/sound";
 
 const WORD_POOL = [
   "many", "over", "even", "would", "eye", "lead", "run", "against", "or", "real",
@@ -40,6 +40,7 @@ export default function TypingTestModal() {
 
   // Initialize new test
   const startNewTest = useCallback(() => {
+    playClickSound();
     const text = generateWords(22);
     setTargetText(text);
     setUserInput("");

@@ -15,7 +15,7 @@ export const metadata = {
       "Comprehensive tech stack, frameworks, libraries, cloud tools, and programming languages mastered by Gabriel Lazaro.",
     images: [
       {
-        url: "/Images/dark.png",
+        url: "/Images/light.png",
         width: 1200,
         height: 630,
         alt: "Gabriel Lazaro Tech Stack",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "Tech Stack — Gabriel Lazaro",
     description:
       "Comprehensive tech stack, frameworks, libraries, cloud tools, and programming languages mastered by Gabriel Lazaro.",
-    images: ["/Images/dark.png"],
+    images: ["/Images/light.png"],
   },
 };
 

@@ -10,6 +10,12 @@ export default function sitemap() {
       priority: 1.0,
     },
     {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/projects`,
       lastModified: currentDate,
       changeFrequency: "weekly",
@@ -29,6 +35,12 @@ export default function sitemap() {
     },
     {
       url: `${baseUrl}/certifications`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/gear`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.85,
