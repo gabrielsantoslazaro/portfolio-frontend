@@ -12,9 +12,12 @@
     ]
   },
   "skills": {
-    "frontend": ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Vite", "Tailwind CSS"],
-    "backend": ["Node.js", "Express.js", "NestJS", "PostgreSQL", "Supabase", "Firebase", "MySQL"],
-    "mobile": ["Flutter", "Dart"],
+    "frontend": ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Vite", "Webpack", "Tailwind CSS"],
+    "backend": ["Node.js", "Express.js", "NestJS", "GraphQL", "gRPC", "PostgreSQL", "Supabase", "Firebase", "MySQL", "REST APIs"],
+    "security_and_auth": ["OAuth", "JWT", "AES", "RSA", "SHA", "Data Encryption"],
+    "tooling_and_quality": ["Webpack", "ESLint", "Prettier", "Git", "GitHub", "Docker", "Postman", "VS Code"],
+    "collaboration": ["Discord", "Teams", "GitHub Projects"],
+    "mobile": ["Flutter", "Dart", "Android Studio"],
     "programming_languages": ["JavaScript", "TypeScript", "Python", "Dart", "Java", "C#", "C++", "PHP", "SQL"],
     "ai_tools": ["PyTorch", "Hugging Face", "Google GenAI", "OpenAI API", "Prompt Engineering", "LLM Pipelines"]
   },

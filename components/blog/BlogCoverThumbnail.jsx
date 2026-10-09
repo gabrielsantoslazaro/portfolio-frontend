@@ -138,26 +138,129 @@ export default function BlogCoverThumbnail({ post, className = "" }) {
   }
 
   // Post 4: Midnight Coding, Dark Mode UIs & Arctic Monkeys
+  if (post.id === "midnight-coding-darkmode") {
+    return (
+      <div className={`blog-art-cover bg-lifestyle ${className}`}>
+        <svg viewBox="0 0 200 125" className="blog-art-svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="nightGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#050508" />
+              <stop offset="100%" stopColor="#18181b" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="125" fill="url(#nightGrad)" />
+
+          {/* Arctic Monkeys / Audio Waveform Minimalist Art */}
+          <path d="M 20 62 Q 40 62 50 62 T 70 30 T 85 92 T 100 20 T 115 102 T 130 35 T 145 78 T 160 62 T 180 62"
+                fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" opacity="0.9" />
+          
+          {/* Subtle Crescent Moon & 2 AM indicator */}
+          <path d="M 165 24 A 8 8 0 0 0 157 16 A 10 10 0 1 1 165 24 Z" fill="#e4e4e7" opacity="0.85" />
+          <text x="24" y="30" fill="#71717a" fontSize="7.5" fontFamily="monospace" opacity="0.8">02:00 AM</text>
+          <text x="24" y="105" fill="#a1a1aa" fontSize="7.5" fontFamily="monospace">ARCTIC MONKEYS</text>
+          <text x="136" y="105" fill="#ffffff" fontSize="7.5" fontFamily="monospace">DARK MODE</text>
+        </svg>
+      </div>
+    );
+  }
+
+  // Post 5: Why Responsive Web Design Matters
+  if (post.id === "responsive-web-design") {
+    return (
+      <div className={`blog-art-cover bg-responsive ${className}`}>
+        <svg viewBox="0 0 200 125" className="blog-art-svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="respGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#08080a" />
+              <stop offset="100%" stopColor="#18181b" />
+            </linearGradient>
+            <pattern id="respGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="200" height="125" fill="url(#respGrad)" />
+          <rect width="200" height="125" fill="url(#respGrid)" />
+
+          {/* Desktop Screen Outline */}
+          <rect x="22" y="20" width="105" height="68" rx="5" fill="#0c0c0e" stroke="#52525b" strokeWidth="1.2" />
+          <rect x="26" y="24" width="97" height="8" rx="2" fill="#18181b" />
+          <circle cx="31" cy="28" r="1.5" fill="#71717a" />
+          <circle cx="36" cy="28" r="1.5" fill="#71717a" />
+          <circle cx="41" cy="28" r="1.5" fill="#71717a" />
+          <rect x="48" y="26.5" width="40" height="3" rx="1.5" fill="#27272a" />
+          
+          {/* Desktop Layout Grid */}
+          <rect x="28" y="37" width="22" height="45" rx="2" fill="#18181b" stroke="#3f3f46" strokeWidth="0.8" />
+          <rect x="54" y="37" width="67" height="20" rx="2" fill="#1c1c20" stroke="#3f3f46" strokeWidth="0.8" />
+          <rect x="54" y="61" width="31" height="21" rx="2" fill="#18181b" stroke="#3f3f46" strokeWidth="0.8" />
+          <rect x="89" y="61" width="32" height="21" rx="2" fill="#18181b" stroke="#3f3f46" strokeWidth="0.8" />
+
+          {/* Monitor Base */}
+          <rect x="68" y="88" width="14" height="9" fill="#27272a" />
+          <rect x="57" y="97" width="36" height="3" rx="1.5" fill="#3f3f46" />
+
+          {/* Mobile Screen Overlay */}
+          <rect x="140" y="28" width="38" height="72" rx="6" fill="#09090b" stroke="#ffffff" strokeWidth="1.5" />
+          <rect x="154" y="32" width="10" height="2.5" rx="1.2" fill="#52525b" />
+          <rect x="144" y="38" width="30" height="12" rx="2" fill="#27272a" />
+          <rect x="144" y="53" width="30" height="18" rx="2" fill="#18181b" stroke="#52525b" strokeWidth="0.8" />
+          <rect x="144" y="74" width="30" height="18" rx="2" fill="#18181b" stroke="#52525b" strokeWidth="0.8" />
+          <circle cx="159" cy="96" r="2" fill="#52525b" />
+
+          {/* Labels & Viewport Tags */}
+          <text x="24" y="112" fill="#a1a1aa" fontSize="6.5" fontFamily="monospace">RESPONSIVE UI</text>
+          <text x="138" y="112" fill="#ffffff" fontSize="6.5" fontFamily="monospace">MOBILE FIRST</text>
+        </svg>
+      </div>
+    );
+  }
+
+  // Post 6: Beyond the Code: My Hobbies and Interests (Guitar, Gaming & Coffee)
   return (
-    <div className={`blog-art-cover bg-lifestyle ${className}`}>
+    <div className={`blog-art-cover bg-hobbies ${className}`}>
       <svg viewBox="0 0 200 125" className="blog-art-svg" preserveAspectRatio="xMidYMid slice">
         <defs>
-          <linearGradient id="nightGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#050508" />
+          <linearGradient id="hobbiesGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#060608" />
             <stop offset="100%" stopColor="#18181b" />
           </linearGradient>
+          <pattern id="hobbiesGrid" width="12" height="12" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="0.8" fill="rgba(255,255,255,0.06)" />
+          </pattern>
         </defs>
-        <rect width="200" height="125" fill="url(#nightGrad)" />
+        <rect width="200" height="125" fill="url(#hobbiesGrad)" />
+        <rect width="200" height="125" fill="url(#hobbiesGrid)" />
 
-        {/* Arctic Monkeys / Audio Waveform Minimalist Art */}
-        <path d="M 20 62 Q 40 62 50 62 T 70 30 T 85 92 T 100 20 T 115 102 T 130 35 T 145 78 T 160 62 T 180 62"
-              fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" opacity="0.9" />
-        
-        {/* Subtle Crescent Moon & 2 AM indicator */}
-        <path d="M 165 24 A 8 8 0 0 0 157 16 A 10 10 0 1 1 165 24 Z" fill="#e4e4e7" opacity="0.85" />
-        <text x="24" y="30" fill="#71717a" fontSize="7.5" fontFamily="monospace" opacity="0.8">02:00 AM</text>
-        <text x="24" y="105" fill="#a1a1aa" fontSize="7.5" fontFamily="monospace">ARCTIC MONKEYS</text>
-        <text x="136" y="105" fill="#ffffff" fontSize="7.5" fontFamily="monospace">DARK MODE</text>
+        {/* 1. Acoustic Guitar Silhouette / Soundhole & Fretboard (Left) */}
+        <path d="M 18 80 C 18 60, 42 60, 44 48 C 45 40, 36 34, 42 22 C 48 10, 68 18, 68 32 C 68 45, 54 50, 56 65 C 58 80, 40 98, 25 96 Z" 
+              fill="#101014" stroke="#52525b" strokeWidth="1.2" />
+        <circle cx="46" cy="54" r="9" fill="#000000" stroke="#71717a" strokeWidth="1" />
+        <line x1="28" y1="54" x2="64" y2="54" stroke="#ffffff" strokeWidth="0.8" opacity="0.9" />
+        <line x1="46" y1="20" x2="46" y2="90" stroke="#ffffff" strokeWidth="0.8" opacity="0.9" />
+
+        {/* 2. Steaming Coffee Cup (Center) */}
+        <rect x="88" y="52" width="28" height="24" rx="4" fill="#18181b" stroke="#ffffff" strokeWidth="1.2" />
+        <path d="M 116 58 C 122 58, 122 68, 116 70" fill="none" stroke="#ffffff" strokeWidth="1.2" />
+        <line x1="84" y1="78" x2="120" y2="78" stroke="#52525b" strokeWidth="1.5" strokeLinecap="round" />
+        {/* Steam waves */}
+        <path d="M 94 46 Q 96 42 94 38" fill="none" stroke="#a1a1aa" strokeWidth="1" strokeLinecap="round" />
+        <path d="M 102 46 Q 104 40 102 36" fill="none" stroke="#ffffff" strokeWidth="1" strokeLinecap="round" />
+        <path d="M 110 46 Q 112 42 110 38" fill="none" stroke="#a1a1aa" strokeWidth="1" strokeLinecap="round" />
+
+        {/* 3. Game Controller / D-Pad (Right) */}
+        <rect x="140" y="42" width="46" height="28" rx="8" fill="#141418" stroke="#a1a1aa" strokeWidth="1.2" />
+        {/* D-pad cross */}
+        <rect x="146" y="52" width="12" height="4" rx="1" fill="#ffffff" />
+        <rect x="150" y="48" width="4" height="12" rx="1" fill="#ffffff" />
+        {/* Action buttons */}
+        <circle cx="174" cy="51" r="2.5" fill="#ffffff" />
+        <circle cx="180" cy="56" r="2.5" fill="#71717a" />
+        <circle cx="168" cy="56" r="2.5" fill="#71717a" />
+        <circle cx="174" cy="61" r="2.5" fill="#52525b" />
+
+        {/* Labels */}
+        <text x="24" y="112" fill="#71717a" fontSize="6.5" fontFamily="monospace">GUITAR · GAMING</text>
+        <text x="135" y="112" fill="#ffffff" fontSize="6.5" fontFamily="monospace">COFFEE &amp; CODE</text>
       </svg>
     </div>
   );

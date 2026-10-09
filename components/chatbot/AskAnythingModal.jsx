@@ -187,9 +187,12 @@ export default function AskAnythingModal() {
     ) {
       return `Ang core tech stack at tools na ginagamit ni Gabriel:
 
-• Frontend: JavaScript (ES6+), React.js, Next.js, Tailwind CSS, HTML5, CSS3
-• Backend & DB: Node.js, Express.js, PostgreSQL, Supabase, MySQL, Firebase, PHP, Python
-• AI & DevOps: Google GenAI, OpenAI API, REST APIs, Git/GitHub, Docker, VS Code`;
+• Frontend: JavaScript, TypeScript, React, Next.js, Vite, Webpack, Tailwind CSS, HTML5, CSS3
+• Backend & APIs: Node.js, Express.js, NestJS, GraphQL, gRPC, REST APIs, PostgreSQL, Supabase, MySQL, Firebase
+• Security & Auth: OAuth, JWT, AES, RSA, SHA, RBAC
+• Tools & DevOps: Webpack, ESLint, Prettier, Git/GitHub, Docker, Postman, VS Code
+• Collaboration: Discord, Microsoft Teams
+• AI & Mobile: Google GenAI, OpenAI API, PyTorch, Flutter, Dart`;
     }
 
     if (
