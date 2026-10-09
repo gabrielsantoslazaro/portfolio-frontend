@@ -65,7 +65,7 @@ export default function GearPage() {
             style={{
               fontSize: "14.5px",
               lineHeight: "1.65",
-              color: isDark ? "#94a3b8" : "#64748b",
+              color: isDark ? "#a1a1aa" : "#64748b",
               maxWidth: "680px",
               margin: 0,
             }}
@@ -85,7 +85,7 @@ export default function GearPage() {
                   fontSize: "12px",
                   fontWeight: "700",
                   letterSpacing: "0.06em",
-                  color: "var(--muted, #94a3b8)",
+                  color: "var(--muted, #a1a1aa)",
                   textTransform: "uppercase",
                   paddingLeft: "2px",
                 }}

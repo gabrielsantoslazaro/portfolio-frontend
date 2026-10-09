@@ -66,7 +66,7 @@ html, body {
 /* Global Body Dark Mode Pure Pitch Black */
 body.dark-mode {
   --text: #ffffff !important;
-  --muted: #94a3b8 !important;
+  --muted: #a1a1aa !important;
   --border: #27272a !important;
   --bg: #000000 !important;
   --card-bg: #09090b !important;
@@ -2275,7 +2275,7 @@ body.dark-mode .cert-clean-issuer {
 }
 
 body.dark-mode .cert-clean-verify {
-  color: #94a3b8 !important;
+  color: #a1a1aa !important;
 }
 
 /* ==========================================================================
@@ -2380,7 +2380,7 @@ body.dark-mode .project-list-category {
 }
 
 body.dark-mode .project-list-p {
-  color: #cbd5e1 !important;
+  color: #a1a1aa !important;
 }
 
 .project-list-tags {
@@ -3664,7 +3664,7 @@ body.dark-mode .certifications-page .page-title {
 }
 
 body.dark-mode .certifications-page p {
-  color: #94a3b8 !important;
+  color: #a1a1aa !important;
 }
 
 /* ==========================================================================
@@ -3946,7 +3946,7 @@ body.dark-mode .blog-main-title {
 }
 
 body.dark-mode .blog-subtitle {
-  color: #94a3b8 !important;
+  color: #a1a1aa !important;
 }
 
 .blog-view-toggle {
@@ -4164,7 +4164,7 @@ body.dark-mode .blog-item-title {
 }
 
 body.dark-mode .blog-item-excerpt {
-  color: #94a3b8;
+  color: #a1a1aa !important;
 }
 
 .blog-item-footer {
@@ -4728,16 +4728,22 @@ body.dark-mode .post-excerpt-sub {
   margin-bottom: 26px;
 }
 
-.post-author-avatar {
-  width: 26px;
-  height: 26px;
+.post-author-avatar,
+.blog-author-avatar {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 10%;
   border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #f1f5f9;
+  flex-shrink: 0;
 }
 
-body.dark-mode .post-author-avatar {
+body.dark-mode .post-author-avatar,
+body.dark-mode .blog-author-avatar {
   border-color: #27272a;
+  background: #18181b;
 }
 
 .post-author-name {

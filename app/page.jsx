@@ -387,7 +387,7 @@ export default function HomePage() {
                         {proj.badge || proj.category}
                       </span>
                       {isCenter && (
-                        <span style={{ fontSize: "10px", fontFamily: "ui-monospace, monospace", color: "var(--muted, #94a3b8)", letterSpacing: "0.04em", fontWeight: "600" }}>
+                        <span style={{ fontSize: "10px", fontFamily: "ui-monospace, monospace", color: "var(--muted, #a1a1aa)", letterSpacing: "0.04em", fontWeight: "600" }}>
                           FEATURED
                         </span>
                       )}

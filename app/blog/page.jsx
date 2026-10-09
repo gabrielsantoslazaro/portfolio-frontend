@@ -78,7 +78,7 @@ export default function BlogPage() {
                 style={{
                   fontSize: "14.5px",
                   lineHeight: "1.65",
-                  color: isDark ? "#94a3b8" : "#64748b",
+                  color: isDark ? "#a1a1aa" : "#64748b",
                   maxWidth: "680px",
                   margin: 0
                 }}

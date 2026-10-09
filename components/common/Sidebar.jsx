@@ -132,7 +132,16 @@ export default function Sidebar() {
       return null;
     };
 
-    const handleMouseOver = (e) => {
+    // Hover sound (MOUSE ONLY - strict check to ensure touch/tablet thumb contact NEVER triggers hover)
+    const handlePointerOver = (e) => {
+      if (!e || e.pointerType !== "mouse") return;
+      if (
+        typeof window !== "undefined" &&
+        window.matchMedia &&
+        !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+      ) {
+        return;
+      }
       const target = getInteractiveTarget(e.target);
 
       if (!target) {
@@ -148,11 +157,12 @@ export default function Sidebar() {
       playHoverSound();
     };
 
-    // Dual-phase mechanical click: Crisp downstroke on press, delicate high return on release
+    // Dual-phase mechanical click: Crisp downstroke on press, delicate high return on release (MOUSE ONLY)
     let isPressedOnInteractive = false;
 
     const handlePointerDown = (e) => {
-      // Primary left click or touch only
+      // STRICT: Only physical mouse pointer triggers pointerdown sound (prevents ANY thumb contact sound on mobile/tablet)
+      if (!e || e.pointerType !== "mouse") return;
       if (e.button !== undefined && e.button !== 0) return;
       const target = getInteractiveTarget(e.target);
       if (target) {
@@ -161,7 +171,8 @@ export default function Sidebar() {
       }
     };
 
-    const handlePointerUp = () => {
+    const handlePointerUp = (e) => {
+      if (!e || e.pointerType !== "mouse") return;
       if (isPressedOnInteractive) {
         isPressedOnInteractive = false;
         playClickUpSound();
@@ -172,11 +183,20 @@ export default function Sidebar() {
       isPressedOnInteractive = false;
     };
 
+    // Global click handler: Plays crisp click sound when tapping/clicking interactive buttons & links
+    const handleClick = (e) => {
+      const target = getInteractiveTarget(e.target);
+      if (target) {
+        playClickSound();
+      }
+    };
+
     window.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("mouseover", handleMouseOver, { passive: true });
+    document.addEventListener("pointerover", handlePointerOver, { passive: true });
     document.addEventListener("pointerdown", handlePointerDown, { capture: true, passive: true });
     document.addEventListener("pointerup", handlePointerUp, { capture: true, passive: true });
     document.addEventListener("pointercancel", handlePointerCancel, { passive: true });
+    document.addEventListener("click", handleClick, { capture: true, passive: true });
 
     const handleMediaChange = (e) => {
       const currentMode = localStorage.getItem("theme_mode");
@@ -190,10 +210,11 @@ export default function Sidebar() {
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("pointerover", handlePointerOver);
       document.removeEventListener("pointerdown", handlePointerDown, { capture: true });
       document.removeEventListener("pointerup", handlePointerUp, { capture: true });
       document.removeEventListener("pointercancel", handlePointerCancel);
+      document.removeEventListener("click", handleClick, { capture: true });
       mediaQuery.removeEventListener("change", handleMediaChange);
     };
   }, []);

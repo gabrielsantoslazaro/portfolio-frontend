@@ -67,7 +67,7 @@ export default function ExperiencePage() {
               style={{
                 fontSize: "14.5px",
                 lineHeight: "1.65",
-                color: theme === "dark" ? "#94a3b8" : "#64748b",
+                color: theme === "dark" ? "#a1a1aa" : "#64748b",
                 maxWidth: "680px",
                 margin: 0
               }}
